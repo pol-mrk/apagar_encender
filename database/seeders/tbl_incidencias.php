@@ -21,7 +21,7 @@ class tbl_incidencias extends Seeder
                 'titulo_inc' => 'Problema de conexión',
                 'desc_inc' => 'El ratón bluetooth no se conecta.',
                 'fecha_inc' => $now,
-                'id_user' => 2,
+                'id_user' => 3,
                 'id_subcat' => 6,
                 'id_estado' => 1,
                 'tecnico' => 1,

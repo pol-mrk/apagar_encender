@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('nombre_user');
             $table->string('apellidos_user');
             $table->string('correo_user');
-            $table->date('fecha_user');
+            $table->date('fecha_ini_user');
+            $table->date('fecha_fin_user');
             $table->string('pwd_user');
             $table->unsignedBigInteger('id_rol');
             $table->unsignedBigInteger('id_sede');

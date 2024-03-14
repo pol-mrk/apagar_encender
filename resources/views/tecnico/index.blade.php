@@ -39,11 +39,21 @@
     <div class="col-lg-12 ml-auto" style="border:1px solid">
         <form action="" method="post" id="frmbusqueda">
             <div class="form-group">
-                <label for="buscar">Buscar:</label>
-                <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control">
+                <label for="incidencia">Incidencia:</label>
+                <input type="text" name="incidencia" id="incidencia" placeholder="Buscar...">
             </div>
         </form>
     </div>
+    <hr>
+    <div class="col-lg-12 ml-auto" style="border:1px solid">
+        <form action="" method="post" id="frmbusqueda">
+            <div class="form-group">
+                <label for="usuario">usuario:</label>
+                <input type="text" name="usuario" id="usuario" placeholder="Buscar...">
+            </div>
+        </form>
+    </div>
+    <hr>
     <div>
         <table>
             <thead>
@@ -54,7 +64,6 @@
                 <td>Categoria</td>
                 <td>Estado</td>
                 <td>Tecnico</td>
-                <td>acciones</td>
             </thead>
             <tbody id="incidencias"></tbody>
         </table>

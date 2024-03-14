@@ -19,7 +19,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_subcat');
             $table->unsignedBigInteger('id_estado');
-            $table->unsignedBigInteger('tecnico');
+            $table->unsignedBigInteger('tecnico')->nullable();
+            $table->string('foto_inc');
             $table->foreign('id_user')->references('id')->on('tbl_users')->onDelete('cascade');
             $table->foreign('id_subcat')->references('id')->on('tbl_subcategorias')->onDelete('cascade');
             $table->foreign('id_estado')->references('id')->on('tbl_estados')->onDelete('cascade');

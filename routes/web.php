@@ -19,3 +19,5 @@ Route::get('/', function () {
 });
 
 Route::post('/listar', [incidenciasController::class, 'index'])->name('tecnico.index');
+Route::post('/editar', [incidenciasController::class, 'editar'])->name('editar');
+Route::post('/registrar', [incidenciasController::class, 'register'])->name('register');

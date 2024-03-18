@@ -15,7 +15,7 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('login');
+    return view('sedes');
 });
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
@@ -27,7 +27,8 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 use App\Http\Controllers\UserController;
 
-Route::post('/registro-usuario', [UserController::class, 'store']);
+Route::get('/crear-usuario', [UserController::class, 'create']);
+Route::post('/registro-usuario', [UserController::class, 'store'])->name('registro-usuario');
 
 ///////////////////////////////////////// CREAR UN NUEVO USUARIO /////////////////////////////////////////////////////////////////////////
 
@@ -36,6 +37,7 @@ Route::post('/registro-usuario', [UserController::class, 'store']);
 use App\Http\Controllers\SearchUserController;
 
 Route::get('/buscar-usuarios', [SearchUserController::class, 'search']);
+Route::get('/search/users', 'UserController@search')->name('search.users');
 
 ///////////////////////////////////////// BUSCAR USUARIO /////////////////////////////////////////////////////////////////////////
 
@@ -65,7 +67,7 @@ Route::post('/guardar-categoria', [CategoriaSubcategoriaController::class, 'stor
 
 use App\Http\Controllers\MontrealController;
 
-Route::get('/montreal', [MontrealController::class, 'index']);
+Route::get('/montreal', [MontrealController::class, 'index'])->name('montreal');
 
 ///////////////////////////////////////// CRUD MONTREAL /////////////////////////////////////////////////////////////////////////
 
@@ -74,11 +76,11 @@ Route::get('/montreal', [MontrealController::class, 'index']);
 
 use App\Http\Controllers\BerlinController;
 
-Route::get('/berlin', [BerlinController::class, 'listarUsuariosSede2']);
+Route::get('/berlin', [BerlinController::class, 'listarUsuariosSede2'])->name('berlin');
 
 ///////////////////////////////////////// CRUD BERLIN /////////////////////////////////////////////////////////////////
 
 use App\Http\Controllers\BarcelonaController;
 
-Route::get('/barcelona', [BarcelonaController::class, 'index']);
+Route::get('/barcelona', [BarcelonaController::class, 'index'])->name('barcelona');
 Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuarios']);

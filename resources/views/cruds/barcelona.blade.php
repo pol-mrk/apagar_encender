@@ -59,36 +59,31 @@
       <th>Acciones</th>
     </tr>
 
-    <?php
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            echo "<tr>
-                    <td>{$row['id']}</td>
-                    <td>{$row['nombre_user']}</td>
-                    <td>{$row['apellidos_user']}</td>
-                    <td>{$row['correo_user']}</td>
-                    <td>{$row['fecha_ini_user']}</td>
-                    <td>{$row['fecha_fin_user']}</td>
-                    <td>{$row['id_rol']}</td>
-                    <td>
-                        <a href='editar_usuario.php?id={$row['id']}'>Editar</a>
-                        <a href='dar_baja_usuario.php?id={$row['id']}'>Dar de Baja</a>
-                    </td>
-                  </tr>";
-        }
-    } else {
-        echo "<tr><td colspan='7'>No hay usuarios registrados</td></tr>";
-    }
-    ?>
+    @forelse ($users as $user)
+    <tr>
+        <td>{{ $user->id }}</td>
+        <td>{{ $user->nombre_user }}</td>
+        <td>{{ $user->apellidos_user }}</td>
+        <td>{{ $user->correo_user }}</td>
+        <td>{{ $user->fecha_ini_user }}</td>
+        <td>{{ $user->fecha_fin_user }}</td>
+        <td>{{ $user->id_rol }}</td>
+        <td>
+            <a href='editar_usuario/{{ $user->id }}'>Editar</a>
+            <a href='dar_baja_usuario/{{ $user->id }}'>Dar de Baja</a>
+        </td>
+    </tr>
+    @empty
+    <tr>
+        <td colspan="8">No hay usuarios registrados</td>
+    </tr>
+    @endforelse
 
   </table>
 
 </body>
 </html>
 
-<?php
-$conn->close();
-?>
 
 <script>
 function searchUsersByNombre() {

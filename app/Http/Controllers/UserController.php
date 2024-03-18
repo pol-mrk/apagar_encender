@@ -8,6 +8,12 @@ use App\Models\Usuarios;
 
 class UserController extends Controller
 {
+
+    public function create()
+    {
+        return view('form_user');
+    }
+
     public function store(Request $request)
     {
         // Validación de datos del formulario (puedes añadir más validaciones según tus necesidades)

@@ -7,6 +7,15 @@ use Illuminate\Support\Facades\DB;
 
 class CategoriaSubcategoriaController extends Controller
 {
+
+
+    public function create()
+    {
+        // Obtener todas las categorías para pasarlas a la vista
+        return view('crear_categoria');
+    }
+
+
     public function store(Request $request)
     {
         // Validar los datos del formulario

@@ -12,7 +12,7 @@ class BarcelonaController extends Controller
         // Consultar usuarios con id_sede igual a 1
         $users = DB::table('tbl_users')->where('id_sede', 1)->get();
 
-        return view('crud.barcelona', ['users' => $users]);
+        return view('cruds.barcelona', ['users' => $users]);
     }
 
     public function buscarUsuarios(Request $request)

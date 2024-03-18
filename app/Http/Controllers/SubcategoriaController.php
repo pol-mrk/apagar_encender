@@ -13,7 +13,7 @@ class SubcategoriaController extends Controller
     {
         // Obtener todas las categorías para pasarlas a la vista
         $categorias = Categorias::all();
-        return view('crear_subcategoria', ['categorias' => $categorias]);
+        return view('crear_incidencia', ['categorias' => $categorias]);
     }
 
     public function store(Request $request)

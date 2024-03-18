@@ -58,7 +58,7 @@ function listarincidencias(nombre_incidencia, usuario_incidencia) {
                 str += "</form></td>";
                 str += "<td>" + (item.nombre_tecnico || 'Sin asignar') + "</td>";
                 // str += "<td><button type='button' class='btn btn-success' onclick='chat(" + item.id_user + ")'>Chat</button></td></tr>";
-                str += "<td> <a href=" + route('tecnico.mensaje', item.id_user) + ">chat</a></td></tr>";
+                str += "<td> <a href='tecnico/chat', " + item.id_user + " >chat</a></td></tr>";
                 tabla += str;
             });
             resultado.innerHTML = tabla;
@@ -68,20 +68,6 @@ function listarincidencias(nombre_incidencia, usuario_incidencia) {
     }
     ajax.send(formdata);
 }
-
-// Chat
-function chat(id_user) {
-    var formdata = new FormData();
-
-    var csrfToken = document.querySelector('meta[name="csrf_token"]').getAttribute('content');
-    formdata.append('_token', csrfToken);
-    formdata.append('id', id_user);
-    var ajax = new XMLHttpRequest();
-    ajax.open('POST', '/mensaje/' + id_user);
-
-    ajax.send(formdata);
-}
-
 
 // Mira si el select cambia
 

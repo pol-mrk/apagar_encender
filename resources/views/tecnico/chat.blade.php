@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Chat</title>
+    <title>Título de la página</title>
 </head>
 
 <body>
-    <div>
-        <h1>hola</h1>
-    </div>
+    @foreach ($incidencias as $incidencia)
+        <p>{{ $incidencia->id }} {{ $incidencia->titulo_inc }}</p>
+    @endforeach
+    @foreach ($estados as $estado)
+        <p>{{ $estado->id }} {{ $estado->nombre_estado }}</p>
+    @endforeach
+    {{ dd($incidencias) }}
+
 </body>
-<script src="{{ asset('/js/script.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 </html>

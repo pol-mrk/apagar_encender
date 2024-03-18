@@ -59,6 +59,7 @@ class incidenciasController extends Controller
 
     public function chat($id)
     {
+        // var_dump($id);
         $mensajes = tbl_chats::where(function ($query) use ($id) {
             $query->where('emisor', $id)
                 ->where('receptor', 1);
@@ -70,23 +71,20 @@ class incidenciasController extends Controller
             ->get();
 
         $estados = tbl_estados::all();
-        $incidencias = DB::table('tbl_incidencias')
-            ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
-            ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
-            ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
-            ->leftJoin('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
-            ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
-            ->orderBy('tbl_incidencias.id', 'asc')
-            ->where('id_user', $id)
-            ->get();
-
-        // Si prefieres retornar JSON en lugar de renderizar una vista, puedes usar la siguiente línea:
-        // return response()->json(['incidencias' => $incidencias, 'mensajes' => $mensajes, 'estados' => $estados]);
+        $incidencias = tbl_incidencias::all();
+        // $incidencias = DB::table('tbl_incidencias')
+        //     ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
+        //     ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
+        //     ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
+        //     ->leftJoin('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
+        //     ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
+        //     ->where('id_user', $id)
+        //     ->orderBy('tbl_incidencias.id', 'asc')
+        //     ->get();
 
         // Renderizar la vista con los datos
         return view('tecnico.chat', compact('incidencias', 'estados', 'mensajes'));
     }
-
 
     public function envmensaje(Request $request)
     {

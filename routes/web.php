@@ -23,7 +23,7 @@ route::controller(incidenciasController::class)->group(function () {
     Route::post('/estado', 'estado')->name('estado');
     // Route::post('/chat/{id}', 'chat')->name('chat');
     // Route::post('/mensaje', 'envmensaje')->name('mensaje');
-    route::post('tecnino/{id}', 'chat')->name('tecnico.mensaje');
+    route::get('/tecnico/{id}', 'chat')->name('tecnico.chat');
 });
 
 // Route::post('/listar', [incidenciasController::class, 'index'])->name('index');

@@ -55,6 +55,7 @@
     </div>
     <hr>
     <div>
+        
         <table>
             <thead>
                 <td>Incidencia</td>
@@ -64,6 +65,7 @@
                 <td>Categoria</td>
                 <td>Estado</td>
                 <td>Tecnico</td>
+                {{-- <a href="{{route('tecnico.chat',1)}}">asd</a> --}}
             </thead>
             <tbody id="incidencias">
             </tbody>

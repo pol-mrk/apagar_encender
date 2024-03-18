@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('fecha_ini_user');
             $table->date('fecha_fin_user');
             $table->string('pwd_user');
+            $table->enum('estado', ['activo','inactivo'])->default('activo');
             $table->unsignedBigInteger('id_rol');
             $table->unsignedBigInteger('id_sede');
             $table->foreign('id_rol')->references('id')->on('tbl_roles')->onDelete('cascade');

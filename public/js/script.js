@@ -96,8 +96,8 @@ function ListarIncidencias(valor) {
                 str += "<td>" + item.desc_inc + "</td>";
                 str += "<td>" + item.fecha_inc + "</td>";
                 str += "<td>" + item.foto_inc + "</td>";
-                str += "<td>" + item.nombre_sub_cat + "</td>";
-                str += "<td>" + item.nombre_estado + "</td>";
+                str += "<td>" + item.nombre_subcat + "</td>";
+                str += "<td>" + item.id_estado + "</td>";
                 str += "<td>" + item.tecnico + "</td>";
                 // str += "<td><a href='{{ route('ver') }}?id=" + item.id + "'>Detalles</a></td>";
                 str += "<td><a href='/crud_incidencias/ver?id=" + item.id + "'>Detalles</a></td>";

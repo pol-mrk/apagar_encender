@@ -23,7 +23,7 @@ class tbl_roles extends Seeder
                 'updated_at' => $now,
             ],
             [
-                'nombre_rol' => 'Gestor d’equip',
+                'nombre_rol' => "Gestor d'equip",
                 'created_at' => $now,
                 'updated_at' => $now,
             ],

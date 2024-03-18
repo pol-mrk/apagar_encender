@@ -7,25 +7,25 @@ const usuario = document.getElementById('usuario');
 
 incidencia.addEventListener("keyup", () => {
     const nombre_incidencia = incidencia.value;
-    ListarProductos(nombre_incidencia, '');
+    listarincidencias(nombre_incidencia, '');
     const usuario_incidencia = usuario.value;
-    ListarProductos(nombre_incidencia, usuario_incidencia);
+    listarincidencias(nombre_incidencia, usuario_incidencia);
 });
 
 usuario.addEventListener("keyup", () => {
     const usuario_incidencia = usuario.value;
-    ListarProductos('', usuario_incidencia);
+    listarincidencias('', usuario_incidencia);
     const nombre_incidencia = incidencia.value;
-    ListarProductos(nombre_incidencia, usuario_incidencia);
+    listarincidencias(nombre_incidencia, usuario_incidencia);
 });
 
 // ----------------------
 // LISTAR PRODUCTOS
 // ----------------------
 
-ListarProductos('', '');
+listarincidencias('', '');
 
-function ListarProductos(nombre_incidencia, usuario_incidencia) {
+function listarincidencias(nombre_incidencia, usuario_incidencia) {
     var resultado = document.getElementById('incidencias');
     var formdata = new FormData();
     var csrfToken = document.querySelector('meta[name="csrf_token"]').getAttribute('content');
@@ -94,7 +94,7 @@ function chat(id_user, nombre_user) {
             var incidenciasJSON = json.incidencias;
             var mensajesJSON = json.mensajes;
             var estados = json.estados;
-            console.log(mensajesJSON);
+            // console.log(mensajesJSON);
             // Contenedor de columnas
             let msjchat = "<div style='display: flex;'>";
             // Columna de incidencias
@@ -132,6 +132,7 @@ function chat(id_user, nombre_user) {
                 msjchat += "<h2 style='color: #333;'>Conversación con: " + nombre_user + "</h2>";
                 if (mensajesJSON === null || mensajesJSON.length === 0) {
                     msjchat += "<p style='text-align: left; color: #333; margin: 5px 0;'>Empieza la conversación</p>";
+
                 } else {
                     mensajesJSON.forEach(function (item) {
                         if (item.emisor == id_user) {
@@ -140,13 +141,14 @@ function chat(id_user, nombre_user) {
                             msjchat += "<p style='text-align: right; color: blue; margin: 5px 0;'>" + item.mensaje + " :" + incidencia.nombre_tecnico + " </p>";
                         }
                     });
-                    msjchat += "<form action='' method='post' id='frm' onsubmit(enviarMensaje)>";
-                    msjchat += "<input type='hidden' id='idp' value='" + incidencia.id_user + "'>";
-                    msjchat += "<input type='text' id='msj' style='width: 70%; padding: 5px;' placeholder='Mensaje de 100 caracteres'>";
-                    msjchat += " <button type='button' style='background-color: #3498db; color: #fff; padding: 5px 10px; border: none; border-radius: 4px;'>Enviar</button>";
-                    msjchat += "<p id='mensajeError' style='color: red; font-size: 12px;'></p>"; // Nuevo span para mensajes de error
-                    msjchat += "</form>";
                 }
+                msjchat += "<form action='' method='post' id='frmmensaje'>";
+                msjchat += "<input type='hidden' name='idincidencia' value='" + incidencia.id + "'>";
+                msjchat += "<input type='hidden' name='iduser' value='" + incidencia.id_user + "'>";
+                msjchat += "<input type='text' name='msj' style='width: 70%; padding: 5px;' placeholder='Mensaje de 100 caracteres'>";
+                msjchat += "<input type='submit' value='Enviar' id='mensaje'>";
+                msjchat += "<p id='mensajeError' style='color: red; font-size: 12px;'></p>"; // Nuevo span para mensajes de error
+                msjchat += "</form>";
                 msjchat += "</div>"; // Cerrar columna de mensajes
 
                 msjchat += "</div>"; // Cerrar contenedor de columnas
@@ -160,33 +162,45 @@ function chat(id_user, nombre_user) {
 }
 
 // Enviar mensaje
+document.addEventListener("click", function (event) {
+    if (event.target.id === "mensaje") {
+        // Get the form associated with the clicked button
+        var form = document.getElementById('frmmensaje');
+        var formdata = new FormData(form);
 
-function enviarMensaje(id_user) {
-    var formDataChat = new FormData();
-    formDataChat.append('idp', id_user); // 'id' changed to 'idp' to match PHP variable name
-    formDataChat.append('estado', document.getElementById('msj').value); // Assuming 'msj' is the ID of your message input field
+        var csrfToken = document.querySelector('meta[name="csrf_token"]').getAttribute('content');
+        formdata.append('_token', csrfToken);
 
-    var csrfToken = document.querySelector('meta[name="csrf_token"]').getAttribute('content');
-    formDataChat.append('_token', csrfToken); // Changed to 'formDataChat' for consistency
+        // Send the message
+        enviarMensaje(formdata);
+    }
+});
 
+function enviarMensaje(formdata) {
     var ajax = new XMLHttpRequest();
-    ajax.open('POST', '{{ route("tecnico.mensaje") }}');
+    ajax.open('POST', '/mensaje');
 
     ajax.onload = function () {
         if (ajax.status === 200) {
             if (ajax.responseText === "ok") {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Registrado',
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             } else {
                 Swal.fire({
                     icon: 'warning',
                     title: 'Error al enviar el mensaje, Vuelve a intentarlo más tarde',
                     showConfirmButton: false,
                     timer: 1500
-                }).then(() => {
                 });
             }
         }
     };
-    ajax.send(formDataChat); // Sending formDataChat instead of formdata
+    // Append additional data to the request
+    ajax.send(formdata);
 }
 
 // Mira si el select cambia
@@ -227,7 +241,7 @@ function enviarFormulario(form) {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                ListarProductos('', '');
+                listarincidencias('', '');
             }
         } else {
             Swal.fire({

@@ -87,11 +87,24 @@ class incidenciasController extends Controller
         }
     }
 
-    public function mensaje(Request $request)
+    public function envmensaje(Request $request)
     {
-        $id = $request->input('idp');
-        $estado = $request->input('estado');
-        print($id);
-        exit();
+        $idmensaje = $request->input('idincidencia');
+        $iduser = $request->input('iduser');
+        $mensaje = $request->input('msj');
+
+        $resultado = new tbl_chats();
+        $resultado->incidencia = $idmensaje;
+        if ($iduser != 1) {
+            $resultado->receptor = $iduser;
+            $resultado->emisor = 1;
+        } else {
+            $resultado->receptor = 1;
+            $resultado->emisor = $iduser;
+        }
+        $resultado->mensaje = $mensaje;
+        $resultado->save();
+        echo "ok";
+        return $this->index($request);
     }
 }

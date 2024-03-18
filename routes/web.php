@@ -21,9 +21,9 @@ Route::get('/', function () {
 route::controller(incidenciasController::class)->group(function () {
     Route::post('/listar', 'index')->name('index');
     Route::post('/estado', 'estado')->name('estado');
-    Route::post('/chat/{id}', 'chat')->name('chat');
-    Route::post('/mensaje', 'envmensaje')->name('mensaje');
-    route::get('mensaje/{id}', 'mensaje')->name('chat.mensaje');
+    // Route::post('/chat/{id}', 'chat')->name('chat');
+    // Route::post('/mensaje', 'envmensaje')->name('mensaje');
+    route::post('tecnino/{id}', 'chat')->name('tecnico.mensaje');
 });
 
 // Route::post('/listar', [incidenciasController::class, 'index'])->name('index');

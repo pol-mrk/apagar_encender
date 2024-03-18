@@ -80,12 +80,13 @@ class incidenciasController extends Controller
             ->where('id_user', $id)
             ->get();
 
-        if ($mensajes->isEmpty()) {
-            return response()->json(['incidencias' => $incidencias, 'mensajes' => $mensajes, 'estados' => $estados]);
-        } else {
-            return response()->json(['incidencias' => $incidencias, 'mensajes' => $mensajes, 'estados' => $estados]);
-        }
+        // Si prefieres retornar JSON en lugar de renderizar una vista, puedes usar la siguiente línea:
+        // return response()->json(['incidencias' => $incidencias, 'mensajes' => $mensajes, 'estados' => $estados]);
+
+        // Renderizar la vista con los datos
+        return view('tecnico.chat', compact('incidencias', 'estados', 'mensajes'));
     }
+
 
     public function envmensaje(Request $request)
     {

@@ -10,7 +10,7 @@
 
 <body>
     <div>
-        
+        <h1>hola</h1>
     </div>
 </body>
 <script src="{{ asset('/js/script.js') }}"></script>

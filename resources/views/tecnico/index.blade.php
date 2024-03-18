@@ -65,9 +65,12 @@
                 <td>Estado</td>
                 <td>Tecnico</td>
             </thead>
-            <tbody id="incidencias"></tbody>
+            <tbody id="incidencias">
+            </tbody>
         </table>
     </div>
+    <div id="mensajes"></div>
+    <form action="" onsubmit()></form>
 </body>
 <script src="{{ asset('/js/script.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

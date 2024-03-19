@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Incidencias;
 use Illuminate\Http\Request;
 
@@ -12,7 +11,6 @@ class GestorController extends Controller
             'tbl_incidencias.id',
             'tbl_incidencias.titulo_inc',
             'tbl_users.nombre_user AS nombre_usuario',
-            'tbl_subcategorias.nombre_sub_cat AS nombre_subcategoria',
             'tbl_incidencias.id_estado'
         )
         ->join('tbl_users', 'tbl_users.id', '=', 'tbl_incidencias.id_user')
@@ -29,7 +27,7 @@ class GestorController extends Controller
         )
         ->join('tbl_users AS usuario', 'tbl_incidencias.id_user', '=', 'usuario.id')
         ->join('tbl_users AS tecnico', 'tbl_incidencias.tecnico', '=', 'tecnico.id')
-        ->join('tbl_subcategorias as subcategoria', 'tbl_incidencias.id_subcat', '=', 'subcategoria.id')
+        ->join('tbl_subcategorias AS subcategoria', 'tbl_incidencias.id_subcat', '=', 'subcategoria.id')
         ->where('tbl_incidencias.id', $id) // Filtra por el ID de la incidencia
         ->first();
         return view('show',compact('incidencia'));

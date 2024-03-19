@@ -20,7 +20,7 @@ class UserController extends Controller
         $request->validate([
             'nombre_user' => 'required|string',
             'apellidos_user' => 'required|string',
-            'correo_user' => 'required|email|unique:users',
+            'correo_user' => 'required|email|unique:tbl_users',
             'contrasena_user' => 'required|string',
             'fecha_ini_user' => 'required|date',
             'fecha_fin_user' => 'required|date',

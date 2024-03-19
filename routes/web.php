@@ -36,8 +36,7 @@ Route::post('/registro-usuario', [UserController::class, 'store'])->name('regist
 ///////////////////////////////////////// BUSCAR USUARIO /////////////////////////////////////////////////////////////////////////
 use App\Http\Controllers\SearchUserController;
 
-Route::get('/buscar-usuarios', [SearchUserController::class, 'search']);
-Route::get('/search/users', 'UserController@search')->name('search.users');
+Route::get('/search.users', [SearchUserController::class, 'search'])->name('search.users');
 
 ///////////////////////////////////////// BUSCAR USUARIO /////////////////////////////////////////////////////////////////////////
 

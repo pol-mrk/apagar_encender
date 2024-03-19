@@ -11,6 +11,8 @@
 
     <form action="{{ route('registro-usuario') }}" method="post" onsubmit="return validarFormulario()">
 
+        @csrf
+
         <label for="nombre_user">Nombre:</label>
         <input type="text" name="nombre_user"><br>
 

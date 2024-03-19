@@ -6,7 +6,42 @@
   <title>Lista de Usuarios</title>
 </head>
 <body>
-  <h2>Lista de Usuarios</h2>
+  <h2>Lista de Usuarios Berlin</h2>
+
+  <form id="search-form" action="{{ route('search.users') }}" method="GET">
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre">
+
+    <button type="submit">Buscar</button>
+</form>
+
+<form id="search-form1" action="{{ route('search.users') }}" method="GET">
+    <label for="apellidos">Apellidos:</label>
+    <input type="text" id="apellidos" name="apellidos">
+
+    <button type="submit">Buscar</button>
+</form>
+
+<form id="search-form2" action="{{ route('search.users') }}" method="GET">
+    <label for="fecha_inicio">Fecha de inicio:</label>
+    <input type="date" id="fecha_inicio" name="fecha_inicio">
+
+    <button type="submit">Buscar</button>
+</form>
+
+<form id="search-form3" action="{{ route('search.users') }}" method="GET">
+    <label for="fecha_fin">Fecha de fin:</label>
+    <input type="date" id="fecha_fin" name="fecha_fin">
+
+    <button type="submit">Buscar</button>
+</form>
+
+<form id="search-form4" action="{{ route('search.users') }}" method="GET">
+    <label for="rol">Rol:</label>
+    <input type="text" id="rol" name="rol">
+
+    <button type="submit">Buscar</button>
+</form>
 
   <table border="1">
     <tr>

@@ -15,4 +15,4 @@ class Usuarios extends Model
     public function sedes() {
         return $this->belongsTo(Sedes::class);
     }
-}
+}   

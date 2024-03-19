@@ -58,7 +58,7 @@ function listarincidencias(nombre_incidencia, usuario_incidencia) {
                 str += "</form></td>";
                 str += "<td>" + (item.nombre_tecnico || 'Sin asignar') + "</td>";
                 // str += "<td><button type='button' class='btn btn-success' onclick='chat(" + item.id_user + ")'>Chat</button></td></tr>";
-                str += "<td> <a href='tecnico/chat', " + item.id_user + " >chat</a></td></tr>";
+                str += "<td><a href='tecnico/" + item.id + "'>chat</a></td></tr>";
                 tabla += str;
             });
             resultado.innerHTML = tabla;

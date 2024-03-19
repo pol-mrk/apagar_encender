@@ -59,30 +59,30 @@ class incidenciasController extends Controller
 
     public function chat($id)
     {
-        // var_dump($id);
-        $mensajes = tbl_chats::where(function ($query) use ($id) {
-            $query->where('emisor', $id)
-                ->where('receptor', 1);
-        })
-            ->orWhere(function ($query) use ($id) {
-                $query->where('emisor', 1)
-                    ->where('receptor', $id);
-            })
+        $estados = tbl_estados::all();
+        $incidencias = DB::table('tbl_incidencias')
+            ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
+            ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
+            ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
+            ->leftJoin('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
+            ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
+            ->where('tbl_incidencias.id', $id)
             ->get();
 
-        $estados = tbl_estados::all();
-        $incidencias = tbl_incidencias::all();
-        // $incidencias = DB::table('tbl_incidencias')
-        //     ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
-        //     ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
-        //     ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
-        //     ->leftJoin('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
-        //     ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
-        //     ->where('id_user', $id)
-        //     ->orderBy('tbl_incidencias.id', 'asc')
-        //     ->get();
+        $incidencia = $incidencias[0];
+        $nombre_user = $incidencia->id_user;
 
-        // Renderizar la vista con los datos
+        $mensajes = tbl_chats::where(function ($query) use ($id, $nombre_user) {
+            $query->where('incidencia', $id)
+                ->where('emisor', $nombre_user)
+                ->where('receptor', 1);
+        })
+            ->orWhere(function ($query) use ($id, $nombre_user) {
+                $query->where('incidencia', $id)
+                    ->where('emisor', 1)
+                    ->where('receptor', $nombre_user);
+            })
+            ->get();
         return view('tecnico.chat', compact('incidencias', 'estados', 'mensajes'));
     }
 

@@ -28,7 +28,11 @@ Route::post('/crud_incidencias', [CrudController::class, 'index']) ->name('index
 // Route::get('form_cliente', [ClienteController::class, 'index']);
     // return "Aqui es donde se creara el cliente";
 
+<<<<<<< HEAD
     Route::get('/crud_incidencias/{id}', [CrudController::class, 'ver'])->name('crud_incidencias.ver');
+=======
+    Route::get('/crud_incidencias/ver', [CrudController::class, 'ver'])->name('crud_incidencias.ver');
+>>>>>>> 54c2d97886214823dcd9a56ab1f65c1445f2bc02
 
 
     // Route::post('/crud_incidencias', [CrudController::class, 'crear']) ->name('crear');  

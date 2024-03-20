@@ -52,7 +52,10 @@
         <br>
         <!-- FALTAN LAS FK -->
         <input type="submit" value="Enviar" name="enviar">
+<<<<<<< HEAD
         <a href="/crud_incidencias" class="btn btn-primary">Volver</a>
+=======
+>>>>>>> 54c2d97886214823dcd9a56ab1f65c1445f2bc02
     </form>
 </div>
 

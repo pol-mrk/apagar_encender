@@ -12,7 +12,11 @@
 <div class="container" style="border:1px solid">
   <div class="row">
     
+<<<<<<< HEAD
     <a href="/form_cliente" class="btn btn-primary">Crear Incidencia</a>
+=======
+
+>>>>>>> 54c2d97886214823dcd9a56ab1f65c1445f2bc02
 
     <!-- Zona de la derecha usando 8 de las 12 columnas de Bootstrap -->
     <div class="col-lg-8" style="border:1px solid">
@@ -23,6 +27,7 @@
             <div class="form-group">
               <label for="buscar">Buscar:</label>
               <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control">
+<<<<<<< HEAD
              {{-- <div id="estados"></div> --}}
               <div>
                 <br>
@@ -53,6 +58,17 @@
                       <option value="{{ $estado->id }}">{{ $estado->nombre_estado }}</option>
                   @endforeach
               </select> --}}
+=======
+              <div>
+                <label for="ordenar">Ordenar por:</label>
+                <select id="ordenar" onchange="ordenarIncidencias()">
+                    <option value="titulo_inc_asc">Título ascendente</option>
+                    <option value="titulo_inc_desc">Título descendente</option>
+                    <option value="fecha_inc_asc">Fecha ascendente</option>
+                    <option value="fecha_inc_desc">Fecha descendente</option>
+                    <!-- Agrega más opciones según tus necesidades -->
+                </select>
+>>>>>>> 54c2d97886214823dcd9a56ab1f65c1445f2bc02
 
                 
             </div>

@@ -8,6 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Subcategorias extends Model
 {
     use HasFactory;
+
+    protected $table = 'tbl_subcategorias';
+    
     public function categorias() {
         return $this->belongsTo(Categorias::class);
     }

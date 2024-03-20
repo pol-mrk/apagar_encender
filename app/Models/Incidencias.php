@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incidencias extends Model
 {
+    protected $table = 'tbl_incidencias';
     use HasFactory;
     public function subcategorias() {
         return $this->belongsTo(Subcategorias::class);

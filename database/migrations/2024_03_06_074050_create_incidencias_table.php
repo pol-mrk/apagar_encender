@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('titulo_inc');
             $table->string('desc_inc');
             $table->date('fecha_inc');
+            $table->string('foto_inc');
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_subcat');
             $table->unsignedBigInteger('id_estado');

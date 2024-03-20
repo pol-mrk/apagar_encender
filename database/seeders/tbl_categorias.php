@@ -18,7 +18,12 @@ class tbl_categorias extends Seeder
         $now = Carbon::now();
         DB::table("tbl_categorias")->insert([
             [
-                'nombre_cat' => 'harward',
+                'nombre_cat' => 'Software',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nombre_cat' => 'Hardware',
                 'created_at' => $now,
                 'updated_at' => $now,
             ],

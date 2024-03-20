@@ -1,7 +1,9 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
-
+// TOdas las acciones que hace estan en el controlador de cliente
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\formularioController;
+use App\Http\Controllers\CrudController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,3 +18,29 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+   
+Route::get('form_cliente', [formularioController::class, 'mostrarFormulario']);
+
+Route::get('/crud_incidencias', [CrudController::class, 'mostrar']) ->name('mostrar');
+
+Route::post('/crud_incidencias', [CrudController::class, 'index']) ->name('index');
+// Route::get('form_cliente', [ClienteController::class, 'index']);
+    // return "Aqui es donde se creara el cliente";
+
+    Route::get('/crud_incidencias/{id}', [CrudController::class, 'ver'])->name('crud_incidencias.ver');
+
+
+    // Route::post('/crud_incidencias', [CrudController::class, 'crear']) ->name('crear');  
+Route::post('form_cliente', [ClienteController::class, 'store']) -> name('form_cliente.store');
+
+
+Route::get('form_cliente/create', [ClienteController::class, 'create']);
+    // return "Aqui es donde se creara el cliente";
+
+Route::get('form_cliente/{cliente}', [ClienteController::class, 'show']);
+ 
+
+
+
+ 

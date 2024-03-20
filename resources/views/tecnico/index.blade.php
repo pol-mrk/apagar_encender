@@ -45,14 +45,25 @@
         </form>
     </div>
     <hr>
+
     <div class="col-lg-12 ml-auto" style="border:1px solid">
         <form action="" method="post" id="frmbusqueda">
             <div class="form-group">
-                <label for="usuario">usuario:</label>
+                <label for="usuario">Usuario:</label>
                 <input type="text" name="usuario" id="usuario" placeholder="Buscar...">
             </div>
         </form>
     </div>
+    <hr>
+    <div id="estadosfiltro">
+        <form action="" method="post" id="frmbusqueda">
+            <label for="estado">Estado:</label><br>
+            <select name="filtroestado" id="filtroestado">
+                
+            </select>
+        </form>
+    </div>
+
     <hr>
     <div>
 

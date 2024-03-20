@@ -16,8 +16,8 @@ class incidenciasController extends Controller
     public function index(Request $request)
     {
         $estados = tbl_estados::all();
-        if ($request->input('incidencia') || $request->input('usuario')) {
-            $data = $request->input('incidencia');
+        if ($request->input('incidencia') || $request->input('usuario') || $request->input('estado')) {
+            $incidencia = $request->input('incidencia');
             $query = DB::table('tbl_incidencias')
                 ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
                 ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
@@ -26,9 +26,17 @@ class incidenciasController extends Controller
                 ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico');
             if ($request->input('usuario')) {
                 $usuario = $request->input('usuario');
-                $query->where('titulo_inc', 'like', "%$data%")->where('users.nombre_user', 'like', "%$usuario%");
+                if ($request->input('estado')) {
+                    $estado = $request->input('estado');
+                    $query->where('titulo_inc', 'like', "%$incidencia%")->where('users.nombre_user', 'like', "%$usuario%")->where('tbl_incidencias.id_estado', 'like', "%$estado%");
+                } else {
+                    $query->where('titulo_inc', 'like', "%$incidencia%")->where('users.nombre_user', 'like', "%$usuario%");
+                }
+            } elseif ($request->input('estado')) {
+                $estado = $request->input('estado');
+                $query->where('tbl_incidencias.id_estado', 'like', "%$estado%");
             } else {
-                $query->where('titulo_inc', 'like', "%$data%");
+                $query->where('titulo_inc', 'like', "%$incidencia%");
             }
 
             $incidencia = $query->get();

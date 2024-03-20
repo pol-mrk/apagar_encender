@@ -36,7 +36,9 @@
         </div>
 
         <div id="chat">
-
+            @foreach ($mensajes as $mensaje)
+                <p> {{ $mensaje->mensaje }}</p>
+            @endforeach
         </div>
     </div>
     {{-- {{ dd($incidencias) }} --}}

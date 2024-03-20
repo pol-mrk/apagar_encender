@@ -4,17 +4,17 @@
 
 const incidencia = document.getElementById('incidencia');
 const usuario = document.getElementById('usuario');
+incidencia.addEventListener("keyup", actualizarFiltro);
+usuario.addEventListener("keyup", actualizarFiltro);
 
 let estadosFiltro = '';
+
 function actualizarFiltro(estadosFiltro = null) {
     const nombre_incidencia = incidencia.value;
     const usuario_incidencia = usuario.value;
     // console.log('asdasd' + estadosFiltro);
     listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro, 2);
 }
-
-incidencia.addEventListener("keyup", actualizarFiltro);
-usuario.addEventListener("keyup", actualizarFiltro);
 
 document.addEventListener('DOMContentLoaded', function () {
     // Event listener para cambios en el select de incidencias

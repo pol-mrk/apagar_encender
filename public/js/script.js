@@ -93,7 +93,6 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
     ajax.send(formdata);
 }
 
-
 // Mira si el select cambia
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -130,7 +129,7 @@ function enviarFormulario(form) {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                listarincidencias('', '', '', 3);
+                listarincidencias('', '', '');
             }
         } else {
             Swal.fire({

@@ -103,10 +103,54 @@ use App\Http\Controllers\GestorController;
 
 
 Route::controller(GestorController::class)->group(function(){
-    Route::get('/','index')->name('index');
+    // Route::get('/','index')->name('index');
     Route::get('/create','create')->name('create');
     Route::get('/{id}','show')->name('show');
     Route::post('/','store')->name('store');
     Route::get('/{id}/edit','edit')->name('edit');
     Route::put('/{incidencia}','update')->name('update');
 });
+// _____________________________________________ POL MARK ________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// _____________________________________________ JULIO CESAR ________________________________________________________
+
+use App\Http\Controllers\incidenciasController;
+
+Route::get('/', function () {
+    return view('tecnico.index');
+});
+
+route::controller(incidenciasController::class)->group(function () {
+    Route::post('/listar', 'index')->name('index');
+    Route::post('/estado', 'estado')->name('estado');
+    // Route::post('/chat/{id}', 'chat')->name('chat');
+    // Route::post('/mensaje', 'envmensaje')->name('mensaje');
+    route::get('/tecnico/{id}', 'chat')->name('tecnico.chat');
+});
+
+// Route::post('/listar', [incidenciasController::class, 'index'])->name('index');
+// Route::post('/estado', [incidenciasController::class, 'estado'])->name('estado');
+// Route::post('/chat/{id}', [incidenciasController::class, 'chat'])->name('chat');
+// Route::post('/mensaje', [incidenciasController::class, 'envmensaje'])->name('mensaje');
+
+// _____________________________________________ JULIO CESAR ________________________________________________________

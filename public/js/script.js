@@ -60,6 +60,7 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
                 });
                 estadosfiltro.innerHTML = tabla2;
             }
+            
             incidencias.forEach(function (item) {
                 var str = "<tr><td>" + item.titulo_inc + "</td>";
                 str += "<td>" + item.desc_inc + "</td>";
@@ -67,6 +68,7 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
                 str += "<td>" + item.nombre_user + "</td>";
                 str += "<td>" + item.nombre_sub_cat + "</td>";
                 str += "<td><form action='' method='post' id='frm'>";
+                str += "<input type='hidden' name='idp' id='idp' value='" + item.id + "'>";
                 str += "<select name='estado' id='estado' class='estado'>";
                 estados.forEach(function (estado) {
                     if (estado.id !== 1) {
@@ -78,7 +80,6 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
                     str += ">" + estado.nombre_estado + "</option>";
                 });
                 str += "</select>";
-                str += "<input type='hidden' name='idp' id='idp' value='" + item.id + "'>";
                 str += "</form></td>";
                 str += "<td>" + (item.nombre_tecnico || 'Sin asignar') + "</td>";
                 // str += "<td><button type='button' class='btn btn-success' onclick='chat(" + item.id_user + ")'>Chat</button></td></tr>";

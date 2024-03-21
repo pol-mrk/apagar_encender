@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\tbl_incidencias;
 use App\Models\tbl_estados;
-use App\Models\tbl_users;
 use App\Models\tbl_chats;
 
 
@@ -78,18 +77,22 @@ class incidenciasController extends Controller
             ->get();
 
         $incidencia = $incidencias[0];
-        $nombre_user = $incidencia->id_user;
+        $id_user = $incidencia->id_user;
 
-        $mensajes = tbl_chats::where(function ($query) use ($id, $nombre_user) {
-            $query->where('incidencia', $id)
-                ->where('emisor', $nombre_user)
-                ->where('receptor', 1);
-        })
-            ->orWhere(function ($query) use ($id, $nombre_user) {
-                $query->where('incidencia', $id)
-                    ->where('emisor', 1)
-                    ->where('receptor', $nombre_user);
-            })
+        $mensaje = tbl_chats::select("*")->where('incidencia', $id)->where('emisor', $id_user)->where('receptor', 1)->orwhere('incidencia', $id)
+            ->where('emisor', 1)
+            ->where('receptor', $id_user)
+
+            // $mensajes = tbl_chats::where(function ($query) use ($id, $id_user) {
+            //     $query->where('incidencia', $id)
+            //         ->where('emisor', $id_user)
+            //         ->where('receptor', 1);
+            // })
+            // ->orWhere(function ($query) use ($id, $id_user) {
+            //     $query->where('incidencia', $id)
+            //         ->where('emisor', 1)
+            //         ->where('receptor', $id_user);
+            // })
             ->get();
         return view('tecnico.chat', compact('incidencias', 'estados', 'mensajes'));
     }
@@ -112,6 +115,5 @@ class incidenciasController extends Controller
         $resultado->mensaje = $mensaje;
         $resultado->save();
         echo "ok";
-        return $this->index($request);
     }
 }

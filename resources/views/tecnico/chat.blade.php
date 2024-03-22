@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
     <div>
         <div id="incidencias">
             @foreach ($incidencias as $incidencia)

@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // LISTAR PRODUCTOS
 // ----------------------
 
-listarincidencias('', '', '');
+listarincidencias('', '', '', 1);
 
 function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro, filtro = 1) {
 
@@ -48,6 +48,7 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
             var json = JSON.parse(ajax.responseText);
             var incidencias = json.incidencias;
             var estados = json.estados;
+            console.log(incidencias);
             var tabla = '';
             if (filtro == 1) {
                 var estadosfiltro = document.getElementById('filtroestado');
@@ -60,27 +61,31 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
                 });
                 estadosfiltro.innerHTML = tabla2;
             }
-            
+
             incidencias.forEach(function (item) {
                 var str = "<tr><td>" + item.titulo_inc + "</td>";
                 str += "<td>" + item.desc_inc + "</td>";
                 str += "<td>" + item.created_at + "</td>";
                 str += "<td>" + item.nombre_user + "</td>";
                 str += "<td>" + item.nombre_sub_cat + "</td>";
-                str += "<td><form action='' method='post' id='frm'>";
-                str += "<input type='hidden' name='idp' id='idp' value='" + item.id + "'>";
-                str += "<select name='estado' id='estado' class='estado'>";
-                estados.forEach(function (estado) {
-                    if (estado.id !== 1) {
-                        str += "<option value='" + estado.id + "'";
-                    }
-                    if (estado.nombre_estado === item.nombre_estado) {
-                        str += " selected";
-                    }
-                    str += ">" + estado.nombre_estado + "</option>";
-                });
-                str += "</select>";
-                str += "</form></td>";
+                if (item.id_estado !== 5) {
+                    str += "<td><form action='' method='post' id='frm'>";
+                    str += "<input type='hidden' name='idp' id='idp' value='" + item.id + "'>";
+                    str += "<select name='estado' id='estado' class='estado'>";
+                    estados.forEach(function (estado) {
+                        if (estado.id !== 1 && estado.id !== 5) {
+                            str += "<option value='" + estado.id + "'";
+                        }
+                        if (estado.nombre_estado === item.nombre_estado) {
+                            str += " selected";
+                        }
+                        str += ">" + estado.nombre_estado + "</option>";
+                    });
+                    str += "</select>";
+                    str += "</form></td>";
+                } else {
+                    str += "<td>" + item.nombre_estado + "</td>";
+                }
                 str += "<td>" + (item.nombre_tecnico || 'Sin asignar') + "</td>";
                 // str += "<td><button type='button' class='btn btn-success' onclick='chat(" + item.id_user + ")'>Chat</button></td></tr>";
                 str += "<td><a href='tecnico/" + item.id + "'>chat</a></td></tr>";

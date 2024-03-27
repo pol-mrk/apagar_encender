@@ -19,25 +19,105 @@ let select_option = '';
 // });
 
 const incidencia = document.getElementById('buscar');
-incidencia.addEventListener("keyup", actualizarFiltro);
+// incidencia.addEventListener("keyup", actualizarFiltro);
 
 
-let estadosFiltro = '';
-
-function actualizarFiltro(estadosFiltro = 'Prueba') {
-    const valor = incidencia.value;
-   
-    // console.log('asdasd' + estadosFiltro);
-    ListarIncidencias(valor, estadosFiltro);
-}
-
-function RecogerEstados() {
-    var select_estados = document.getElementById('status_id');
-    var estadosFiltro = select_estados.options[select_estados.selectedIndex].value;
-    actualizarFiltro(estadosFiltro);
-}
 
 
+window.onload = () => {
+    const buscar = document.getElementById('buscar');
+    const status_id = document.getElementById('status_id');
+    const fecha_inc = document.getElementById('fecha_inc');
+    var resolta = document.getElementById('resolta');
+
+    buscar.addEventListener("keyup", () => {
+        const buscarValor = buscar.value;
+        const status_idValor = status_id.value;
+        const fecha_incValor = fecha_inc.value;
+        if (buscarValor == "" &&  status_idValor == "" &&  fecha_incValor == ""  && resolta.value=="" ) {
+            ListarIncidencias("", "", "","");
+        } else {
+            ListarIncidencias(buscarValor, status_idValor, fecha_incValor, resolta.value);
+        }
+    });
+
+    status_id.addEventListener("change", () => {
+        const buscarValor = buscar.value;
+        const status_idValor = status_id.value;
+        const fecha_incValor = fecha_inc.value;
+        if (buscarValor == "" &&  status_idValor == "" &&  fecha_incValor == ""  && resolta.value=="" ) {
+            ListarIncidencias("", "", "","");
+        } else {
+            ListarIncidencias(buscarValor, status_idValor, fecha_incValor, resolta.value);
+        }
+    });
+
+    fecha_inc.addEventListener("change", () => {
+        const buscarValor = buscar.value;
+        const status_idValor = status_id.value;
+        const fecha_incValor = fecha_inc.value;
+        if (buscarValor == "" &&  status_idValor == "" &&  fecha_incValor == ""  && resolta.value=="" ) {
+            ListarIncidencias("", "", "","");
+        } else {
+            ListarIncidencias(buscarValor, status_idValor, fecha_incValor, resolta.value);
+        }
+    });
+    
+    resolta.addEventListener('click', ()=> {
+    if (resolta.value == 'Quitar Resoltas') {
+        resolta.value = 'Ver Resoltas';
+        const buscarValor = buscar.value;
+        const status_idValor = status_id.value;
+        const fecha_incValor = fecha_inc.value;
+        if (buscarValor == "" &&  status_idValor == "" &&  fecha_incValor == ""  && resolta.value=="" ) {
+            ListarIncidencias("", "", "","");
+        } else {
+            ListarIncidencias(buscarValor, status_idValor, fecha_incValor, resolta.value);
+        }
+        
+    } else {
+        resolta.value = 'Quitar Resoltas';
+        const buscarValor = buscar.value;
+        const status_idValor = status_id.value;
+        const fecha_incValor = fecha_inc.value;
+        if (buscarValor == "" &&  status_idValor == "" &&  fecha_incValor == ""  && resolta.value=="" ) {
+            ListarIncidencias("", "", "","");
+        } else {
+            ListarIncidencias(buscarValor, status_idValor, fecha_incValor, resolta.value);
+        }
+        
+    }
+    });
+    
+};
+
+
+
+
+// document.getElementById("status_id").addEventListener('change', RecogerEstados);
+
+
+// let estadosFiltro = '';
+// let fechaFiltro = '';
+
+// function actualizarFiltro(estadosFiltro = 'Prueba', fechaFiltro = 'null') {
+//     const valor = incidencia.value;
+
+//     // console.log('asdasd' + estadosFiltro);
+//     ListarIncidencias(valor, estadosFiltro, fechaFiltro);
+// }
+
+// function RecogerEstados() {
+//     var select_estados = document.getElementById('status_id').value;
+//     // var estadosFiltro = select_estados.options[select_estados.selectedIndex].value;
+//     actualizarFiltro('', select_estados, '');
+// }
+
+// function Fecha() {
+//     var select_fecha = document.getElementById('fecha_inc');
+//     // var fechaFiltro = select_fecha.options[select_fecha.selectedIndex].value;
+//     actualizarFiltro(estadosFiltro, fechaFiltro);
+// }
 
 // ----------------------
 // LISTAR PRODUCTOS
@@ -45,9 +125,9 @@ function RecogerEstados() {
 
 // En primer luegar ejecutamos la función ListarProductos sin enviar ningún parámetro de búsqueda.
 // De esta forma, se listarán todos los objetos de la base de datos al cargar la página por primera vez
-ListarIncidencias('' , '');
+ListarIncidencias('', '', '');
 
-function ListarIncidencias(valor, estadosFiltro) {
+function ListarIncidencias(buscar, status_id, fecha_inc, resolta) {
     // Especificamos en qué elemento HTML de la página vamos a "insertar" el resultado de la consulta AJAX
     // El ID "resultado" corresponde con el tbody de "index.html"
     var resultado = document.getElementById('resultado');
@@ -66,9 +146,13 @@ function ListarIncidencias(valor, estadosFiltro) {
 
     // Creamos un campo nuevo al objeto formulario recién creado y le pasamos como valor el contenido de la variable 
     // busqueda recibida al ejecutarse el evento "keyup" asociado al elemento "buscar" (input del formulario HTML)
-    formdata.append('busqueda', valor);
-    formdata.append('estado', estadosFiltro);
-    console.log(estadosFiltro)
+    formdata.append('busqueda', buscar);
+    formdata.append('estado', status_id);
+    formdata.append('fecha', fecha_inc);
+    formdata.append('resolta', resolta);
+    console.log(buscar);
+    console.log(status_id);
+    console.log(fecha_inc);
 
     // Inicializamos un método que provee el navegador (XMLHttpRequest)
     // que permite enviar y recibir datos. Este método devuelve un objeto
@@ -110,7 +194,10 @@ function ListarIncidencias(valor, estadosFiltro) {
             // console.log(ajax.responseText)
             var json = JSON.parse(ajax.responseText);
             var incidencias = json.incidencias;
+
+            console.log(incidencias)
             var estados = json.estados;
+            console.log(estados);
             var tabla = '';
             var select = '';
 
@@ -136,12 +223,12 @@ function ListarIncidencias(valor, estadosFiltro) {
             });
 
             resultado.innerHTML = tabla;
+        
 
-         
         } else {
             // Si no se recibe un status 200, indica que ha habido un error en la petición AJAX
             resultado.innerText = 'Error';
-            estadosSelect.innerText = 'Error';
+          
         }
     }
 
@@ -181,13 +268,13 @@ function ListarIncidencias(valor, estadosFiltro) {
 
 
 
-function ordenarIncidencias() {
-    var select = document.getElementById('ordenar');
-    var orden = select.value;
+// function ordenarIncidencias() {
+//     var select = document.getElementById('ordenar');
+//     var orden = select.value;
 
-    // Realizar la solicitud AJAX al controlador con el parámetro de ordenamiento
-    ListarIncidencias('', orden);
-}
+//     // Realizar la solicitud AJAX al controlador con el parámetro de ordenamiento
+//     ListarIncidencias('', orden);
+// }
 
 /* Añadir un producto */
 // Escuchar el evento de clic en el botón de registro

@@ -51,11 +51,11 @@
         @enderror
         <br>
         <!-- FALTAN LAS FK -->
+        <input type="hidden" name="id_estado" id="id_estado" value="1">
         <input type="submit" value="Enviar" name="enviar">
-<<<<<<< HEAD
+
         <a href="/crud_incidencias" class="btn btn-primary">Volver</a>
-=======
->>>>>>> 54c2d97886214823dcd9a56ab1f65c1445f2bc02
+
     </form>
 </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD php Vanilla</title>
@@ -37,7 +37,7 @@
 <script src="{{ asset('js/script2.js') }}"></script> --}}
 </body>
 </html>
-=======
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -47,4 +47,4 @@
     <h1>DATOS </h1>
 </body>
 </html>
->>>>>>> 54c2d97886214823dcd9a56ab1f65c1445f2bc02
+

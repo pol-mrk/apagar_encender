@@ -15,55 +15,35 @@ class incidenciasController extends Controller
     public function index(Request $request)
     {
         $estados = tbl_estados::all();
-        if ($request->input('incidencia') || $request->input('usuario') || $request->input('estado')) {
+        $connsulta = DB::table('tbl_incidencias')
+            ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
+            ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
+            ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
+            ->join('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
+            ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
+            ->where('tecnico', 1)
+            ->where('estado.id', '>', 1)
+            ->orderBy('tbl_incidencias.id', 'asc');
 
-            $query = DB::table('tbl_incidencias')
-                ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
-                ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
-                ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
-                ->join('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
-                ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico');
-            $incidencia = $request->input('incidencia');
-            if ($request->input('usuario')) {
-                $usuario = $request->input('usuario');
-                if ($request->input('estado')) {
-                    $estado = $request->input('estado');
-                    $query->where('titulo_inc', 'like', "%$incidencia%")
-                        ->where('users.nombre_user', 'like', "%$usuario%")
-                        ->where('tbl_incidencias.id_estado', 'like', "%$estado%");
-                } else {
-                    $query->where('titulo_inc', 'like', "%$incidencia%")
-                        ->where('users.nombre_user', 'like', "%$usuario%");
-                }
-            } elseif ($request->input('estado')) {
-                $estado = $request->input('estado');
-                if ($request->input('usuario')) {
-                    $usuario = $request->input('usuario');
-                    if ($request->input('incidencia')) {
-                        $query->where('tbl_incidencias.titulo_inc', 'like', "%$incidencia%");
-                    } else {
-                        $query->where('tbl_incidencias.id_estado', 'like', "%$estado%")
-                            ->where('users.nombre_user', 'like', "%$usuario%");
-                    }
-                } else {
-                    $query->where('tbl_incidencias.id_estado', 'like', "%$estado%");
-                }
-            } else {
-                $incidencia = $request->input('incidencia');
-                $query->where('tbl_incidencias.titulo_inc', 'like', "%$incidencia%");
-            }
-            $incidencia = $query->get();
-        } else {
-            $incidencia = DB::table('tbl_incidencias')
-                ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
-                ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
-                ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
-                ->leftJoin('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
-                ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
-                ->orderBy('tbl_incidencias.id', 'asc')
-                ->get();
+        if ($request->input('usuario')) {
+            $usuario = $request->input('usuario');
+            $connsulta->where('users.nombre_user', 'like', "%$usuario%");
         }
-        return response()->json(['incidencias' => $incidencia, 'estados' => $estados]);
+
+        if ($request->input('incidencia')) {
+            $incidencia = $request->input('incidencia');
+            $connsulta->where('tbl_incidencias.titulo_inc', 'like', "%$incidencia%");
+        }
+
+        if ($request->input('estado')) {
+            if ($request->input('estado') != "[object KeyboardEvent]") {
+                $estado = $request->input('estado');
+                $connsulta->where('tbl_incidencias.id_estado', $estado);
+            }
+        }
+
+        $incidencias = $connsulta->get();
+        return response()->json(['incidencias' => $incidencias, 'estados' => $estados]);
     }
 
 

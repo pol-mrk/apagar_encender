@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 route::controller(incidenciasController::class)->group(function () {
+    // route::post('/listar', 'index')->name('tecnico.index');
     Route::post('/listar', 'index')->name('index');
     Route::post('/estado', 'estado')->name('estado');
     // Route::post('/chat/{id}', 'chat')->name('chat');

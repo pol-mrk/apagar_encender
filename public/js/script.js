@@ -62,6 +62,8 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
             }
 
             incidencias.forEach(function (item) {
+
+                
                 var str = "<tr><td>" + item.titulo_inc + "</td>";
                 str += "<td>" + item.desc_inc + "</td>";
                 str += "<td>" + item.created_at + "</td>";

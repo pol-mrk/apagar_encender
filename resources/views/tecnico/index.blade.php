@@ -55,18 +55,17 @@
         </form>
     </div>
     <hr>
+
     <div id="estadosfiltro">
         <form action="" method="post" id="frmbusqueda">
             <label for="estado">Estado:</label><br>
             <select name="filtroestado" id="filtroestado">
-                
             </select>
         </form>
     </div>
-
     <hr>
-    <div>
 
+    <div>
         <table>
             <thead>
                 <td>Incidencia</td>
@@ -76,7 +75,6 @@
                 <td>Categoria</td>
                 <td>Estado</td>
                 <td>Tecnico</td>
-                {{-- <a href="{{route('tecnico.chat',1)}}">asd</a> --}}
             </thead>
             <tbody id="incidencias">
             </tbody>

@@ -9,7 +9,8 @@
 </head>
 
 <body>
-    <a href="{{ route('estado') }}">Volver</a>
+    <a href="{{ url('/') }}" class="btn btn-primary">Ir a la página principal</a>
+
     <div>
         <div id="incidencias">
             @foreach ($incidencias as $incidencia)

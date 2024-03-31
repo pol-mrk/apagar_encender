@@ -17,6 +17,9 @@ class Incidencias extends Model
     public function estados() {
         return $this->belongsTo(Estados::class);
     }
+    public function prioridades() {
+        return $this->belongsTo(Prioridades::class);
+    }
     public function usuarios() {
         return $this->belongsTo(Usuarios::class);
     }

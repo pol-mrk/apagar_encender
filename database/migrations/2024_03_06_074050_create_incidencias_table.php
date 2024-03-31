@@ -20,10 +20,12 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_subcat');
             $table->unsignedBigInteger('id_estado');
-            $table->unsignedBigInteger('tecnico');
+            $table->unsignedBigInteger('id_prioridades');
+            $table->unsignedBigInteger('tecnico');  
             $table->foreign('id_user')->references('id')->on('tbl_users')->onDelete('cascade');
             $table->foreign('id_subcat')->references('id')->on('tbl_subcategorias')->onDelete('cascade');
             $table->foreign('id_estado')->references('id')->on('tbl_estados')->onDelete('cascade');
+            $table->foreign('id_prioridades')->references('id')->on('tbl_prioridades')->onDelete('cascade');
             $table->foreign('tecnico')->references('id')->on('tbl_users')->onDelete('cascade');
             $table->timestamps();
         });

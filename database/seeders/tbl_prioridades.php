@@ -19,26 +19,17 @@ class tbl_prioridades extends Seeder
 
         DB::table("tbl_prioridades")->insert([
             [
-                'nombre_prioridad' => 'Prioritario',
+                'nombre_prioridad' => 'Alta',
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'nombre_prioridad' => 'Muy importante',
+                'nombre_prioridad' => 'Mediana',
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
             [
-                'nombre_prioridad' => 'Importante',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],
-            [
-                'nombre_prioridad' => 'Poco importante',
-                'created_at' => $now,
-                'updated_at' => $now,
-            ],[
-                'nombre_prioridad' => 'Nada importante',
+                'nombre_prioridad' => 'Baja',
                 'created_at' => $now,
                 'updated_at' => $now,
             ]

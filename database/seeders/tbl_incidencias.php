@@ -38,7 +38,7 @@ class tbl_incidencias extends Seeder
                 'id_user' => 3,
                 'id_subcat' => 7,
                 'id_estado' => 2,
-                'id_prioridades' => 4,
+                'id_prioridades' => 3,
                 'tecnico' => 1,
                 'created_at' => $now,
                 'updated_at' => $now,

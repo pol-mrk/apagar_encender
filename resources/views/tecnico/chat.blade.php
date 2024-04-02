@@ -9,6 +9,8 @@
 </head>
 
 <body>
+    <a href="{{ url('/') }}" class="btn btn-primary">Ir a la página principal</a>
+
     <div>
         <div id="incidencias">
             @foreach ($incidencias as $incidencia)
@@ -30,16 +32,35 @@
                     </select>
                     <input type='hidden' name='idp' id='idp' value='{{ $incidencia->id }}'>
                 </form>
+
                 <p>{{ $incidencia->nombre_tecnico }}</p>
                 <p> {{ $incidencia->foto_inc }}</p>
+
+        </div>
+
+        <div id="chat" style="width: 25%;">
+            <h2>Chat con: {{ $incidencia->nombre_user }}</h2>
+            @foreach ($mensajes as $mensaje)
+                @if ($mensaje->receptor != 1)
+                    <p style="text-align: right; color:red">{{ $mensaje->mensaje }} :{{ $incidencia->nombre_tecnico }}
+                    </p>
+                @else
+                    <p style="text-align: left; color:black">{{ $incidencia->nombre_user }}: {{ $mensaje->mensaje }}
+                    </p>
+                @endif
+            @endforeach
+            <form action="" method="post" id="frm">
+                {{-- <p>user</p> --}}
+                <input type="hidden" value="{{ $incidencia->id_user }}">
+                {{-- <p>tecnico</p> --}}
+                <input type="hidden" value="{{ $incidencia->tecnico }}">
+                <p><input type="text" style="width: 50%"></p>
+                <p><input type="submit" value="enviar"></p>
+            </form>
             @endforeach
         </div>
-
-        <div id="chat">
-
-        </div>
     </div>
-    {{-- {{ dd($incidencias) }} --}}
+    {{-- {{ dd($mensajes) }} --}}
 
 </body>
 <script src="{{ asset('/js/chat.js') }}"></script>

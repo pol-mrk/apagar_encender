@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\tbl_incidencias;
 use App\Models\tbl_estados;
-use App\Models\tbl_users;
 use App\Models\tbl_chats;
+
 
 use Illuminate\Support\Facades\DB;
 
@@ -15,41 +15,35 @@ class incidenciasController extends Controller
     public function index(Request $request)
     {
         $estados = tbl_estados::all();
-        if ($request->input('incidencia') || $request->input('usuario') || $request->input('estado')) {
-            $incidencia = $request->input('incidencia');
-            $query = DB::table('tbl_incidencias')
-                ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
-                ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
-                ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
-                ->join('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
-                ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico');
-            if ($request->input('usuario')) {
-                $usuario = $request->input('usuario');
-                if ($request->input('estado')) {
-                    $estado = $request->input('estado');
-                    $query->where('titulo_inc', 'like', "%$incidencia%")->where('users.nombre_user', 'like', "%$usuario%")->where('tbl_incidencias.id_estado', 'like', "%$estado%");
-                } else {
-                    $query->where('titulo_inc', 'like', "%$incidencia%")->where('users.nombre_user', 'like', "%$usuario%");
-                }
-            } elseif ($request->input('estado')) {
-                $estado = $request->input('estado');
-                $query->where('tbl_incidencias.id_estado', 'like', "%$estado%");
-            } else {
-                $query->where('titulo_inc', 'like', "%$incidencia%");
-            }
+        $connsulta = DB::table('tbl_incidencias')
+            ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
+            ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
+            ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
+            ->join('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
+            ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
+            ->where('tecnico', 1)
+            ->where('estado.id', '>', 1)
+            ->orderBy('tbl_incidencias.id', 'asc');
 
-            $incidencia = $query->get();
-        } else {
-            $incidencia = DB::table('tbl_incidencias')
-                ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
-                ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
-                ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
-                ->leftJoin('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
-                ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
-                ->orderBy('tbl_incidencias.id', 'asc')
-                ->get();
+        if ($request->input('usuario')) {
+            $usuario = $request->input('usuario');
+            $connsulta->where('users.nombre_user', 'like', "%$usuario%");
         }
-        return response()->json(['incidencias' => $incidencia, 'estados' => $estados]);
+
+        if ($request->input('incidencia')) {
+            $incidencia = $request->input('incidencia');
+            $connsulta->where('tbl_incidencias.titulo_inc', 'like', "%$incidencia%");
+        }
+
+        if ($request->input('estado')) {
+            if ($request->input('estado') != "[object KeyboardEvent]") {
+                $estado = $request->input('estado');
+                $connsulta->where('tbl_incidencias.id_estado', $estado);
+            }
+        }
+
+        $incidencias = $connsulta->get();
+        return response()->json(['incidencias' => $incidencias, 'estados' => $estados]);
     }
 
 
@@ -77,25 +71,21 @@ class incidenciasController extends Controller
             ->get();
 
         $incidencia = $incidencias[0];
-        $nombre_user = $incidencia->id_user;
+        $id_user = $incidencia->id_user;
 
-        $mensajes = tbl_chats::where(function ($query) use ($id, $nombre_user) {
-            $query->where('incidencia', $id)
-                ->where('emisor', $nombre_user)
-                ->where('receptor', 1);
-        })
-            ->orWhere(function ($query) use ($id, $nombre_user) {
-                $query->where('incidencia', $id)
-                    ->where('emisor', 1)
-                    ->where('receptor', $nombre_user);
-            })
+        $mensajes = tbl_chats::select("*")
+            ->where('incidencia', $id)
+            ->where('emisor', $id_user)
+            ->where('receptor', 1)
+            ->orwhere('emisor', 1)
+            ->where('receptor', $id_user)
             ->get();
         return view('tecnico.chat', compact('incidencias', 'estados', 'mensajes'));
     }
 
     public function envmensaje(Request $request)
     {
-        $idmensaje = $request->input('idincidencia');
+        +$idmensaje = $request->input('idincidencia');
         $iduser = $request->input('iduser');
         $mensaje = $request->input('msj');
 
@@ -111,6 +101,5 @@ class incidenciasController extends Controller
         $resultado->mensaje = $mensaje;
         $resultado->save();
         echo "ok";
-        return $this->index($request);
     }
 }

@@ -8,35 +8,93 @@
     <title>Tecnico</title>
 </head>
 <style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
+    /* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-    th,
-    td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
 
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
+/* Estilos para formularios */
+form {
+    margin-bottom: 20px;
+}
 
-    tbody tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
+.form-group {
+    margin-bottom: 15px;
+}
 
-    tbody tr:hover {
-        background-color: #ddd;
-    }
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+/* Estilos para tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table,
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Estilos para encabezado */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Estilos para separadores */
+hr {
+    border: none;
+    border-top: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+/* Estilos específicos para la página */
+#estadosfiltro {
+    margin-bottom: 20px;
+}
+
+#estadosfiltro select {
+    width: 200px;
+}
+
+/* Estilos específicos para la tabla de incidencias */
+#incidencias td {
+    vertical-align: top;
+}
+
 </style>
 
 <body>
-    <div class="col-lg-12 ml-auto" style="border:1px solid">
+    <div class="col-lg-12 ml-auto">
         <form action="" method="post" id="frmbusqueda">
             <div class="form-group">
                 <label for="incidencia">Incidencia:</label>
@@ -46,7 +104,7 @@
     </div>
     <hr>
 
-    <div class="col-lg-12 ml-auto" style="border:1px solid">
+    <div class="col-lg-12 ml-auto">
         <form action="" method="post" id="frmbusqueda">
             <div class="form-group">
                 <label for="usuario">Usuario:</label>

@@ -12,7 +12,10 @@
 <div class="container" style="border:1px solid">
   <div class="row">
     
+
     <a href="/form_cliente" class="btn btn-primary">Crear Incidencia</a>
+
+
 
 
     <!-- Zona de la derecha usando 8 de las 12 columnas de Bootstrap -->
@@ -24,17 +27,19 @@
             <div class="form-group">
               <label for="buscar">Buscar:</label>
               <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control">
+
+
              {{-- <div id="estados"></div> --}}
               <div>
                 <br>
                 <form action="" method="post">
-                  <select class="form-control status_id" id="status_id" name="status_id" onchange="RecogerEstados()">
-                      <option>Seleccione Estado...</option> 
-                      <option value="Sense Assignar">Sense Assignar</option>
-                      <option value="Assignada">Assignada</option>
-                      <option value="En treball">En treball</option>
-                      <option value="Resolta">Resolta</option>
-                      <option value="Tancada">Tancada</option>
+                  <select class="form-control status_id" id="status_id" name="status_id">
+                      <option value="0">Seleccione Estado... </option> 
+                      <option value="1">Sense Assignar</option>
+                      <option value="2">Assignada</option>
+                      <option value="3">En treball</option>
+                      <option value="4">Resolta</option>
+                      <option value="5">Tancada</option>
                   </select>
               </form>
               
@@ -42,27 +47,29 @@
             <br>
                
                   <select class="form-control status_id" id="fecha_inc">
-                      <option value="Seleccione Fecha">Seleccione Fecha...</option>
+                      <option value="0">Seleccione Fecha...</option>
                       <option value="asc">Fecha ascendente</option>
                       <option value="desc">Fecha descendente</option>
                   </select>
                  
-              
+              <input type="button" name="resolta" id="resolta" value="Quitar Resoltas">
               
                 {{-- <select name="id_estado">
                   @foreach($estados as $estado)
                       <option value="{{ $estado->id }}">{{ $estado->nombre_estado }}</option>
                   @endforeach
               </select> --}}
+
               <div>
-                <label for="ordenar">Ordenar por:</label>
+                {{-- <label for="ordenar">Ordenar por:</label>
                 <select id="ordenar" onchange="ordenarIncidencias()">
                     <option value="titulo_inc_asc">Título ascendente</option>
                     <option value="titulo_inc_desc">Título descendente</option>
                     <option value="fecha_inc_asc">Fecha ascendente</option>
                     <option value="fecha_inc_desc">Fecha descendente</option>
                     <!-- Agrega más opciones según tus necesidades -->
-                </select>
+                </select> --}}
+
 
                 
             </div>
@@ -106,7 +113,7 @@
    
 <!-- <script src="/js/script.js"></script> Modificado por el asset -->
 <!-- El archivo JS lo pondremos en public/js con lo que usaremos el helper asset -->
-<script src="{{ asset('js/scriptIan.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 
    
 </body>

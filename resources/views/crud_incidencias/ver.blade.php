@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CRUD php Vanilla</title>
@@ -33,9 +34,10 @@
 
 <!-- Enlazamos con el script de JS que se encargará de hacer las peticiones AJAX -->
 {{-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-<script src="{{ asset('js/scriptIan2.js') }}"></script> --}}
+<script src="{{ asset('js/script2.js') }}"></script> --}}
 </body>
 </html>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -45,3 +47,4 @@
     <h1>DATOS </h1>
 </body>
 </html>
+

@@ -50,6 +50,8 @@
 
     </form>
 
+    <a href="{{ route('sedes') }}">Volver</a>
+
     <script src="{{ asset('js/validaciones_form.user.js') }}"></script>
 </body>
 </html>

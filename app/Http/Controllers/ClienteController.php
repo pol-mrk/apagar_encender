@@ -19,11 +19,13 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
+        // return $request->all();
+        // die();
         $request->validate([
             'titulo_inc' => 'required|min:3',
             'desc_inc' => ['required', 'min:10'],
             'fecha_inc' => 'required',
-            'foto_inc' => 'required',
+            'file' => 'image',
             'id_subcat' => 'required',
             'id_user' => 'required',
             'id_estado' => 'required',

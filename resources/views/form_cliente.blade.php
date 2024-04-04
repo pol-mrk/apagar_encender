@@ -4,7 +4,7 @@
 
 <div class="container">
     <h1>FORM | INCIDENCIAS</h1>
-    <form action="{{ route('form_cliente.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('admin.files.store') }}" method="post" enctype="multipart/form-data">
         @csrf 
         <input type="text" name="titulo_inc" class="form-control" placeholder="Titulo..." value="{{ old('titulo_inc') }}">
 
@@ -43,8 +43,8 @@
         @enderror
         <br>
         <label for="file">Añade una imagen:</label>
-        <input type="file" name="foto_inc" id="foto_inc">
-        @error('foto_inc')
+        <input type="file" name="file" id="foto_inc" accept="image/*">
+        @error('file')
         <br>
         <span>*{{ $message }}</span> 
         <br>

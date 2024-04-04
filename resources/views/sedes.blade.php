@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>CodePen - No script accordion animation</title>
+    <title>Sedes</title>
     <link rel="stylesheet" href="{{ asset('css/sedes.css') }}">
 </head>
 <body>

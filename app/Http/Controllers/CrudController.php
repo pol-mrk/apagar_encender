@@ -14,7 +14,7 @@ use Illuminate\Http\Request;
 class CrudController extends Controller
 {
     
-    public function index(Request $request)
+    public function incidencia(Request $request)
     {
         $filtro=$request->except('_token');
     
@@ -255,7 +255,7 @@ if (in_array($filtro['fecha'], ['asc', 'desc'])) {
 
     public function mostrar()
     {
-        return view('crud_incidencias.index');
+        return view('crud_incidencias.crud_incidencias');
     }
 
     public function ver($id)

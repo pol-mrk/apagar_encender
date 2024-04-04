@@ -14,9 +14,9 @@ use App\Http\Controllers\LoginController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('sedes');
-// });
+Route::get('/', function () {
+    return view('sedes');
+})->name('sedes');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
@@ -27,7 +27,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 use App\Http\Controllers\UserController;
 
-Route::get('/crear-usuario', [UserController::class, 'create']);
+Route::get('/crear-usuario', [UserController::class, 'create'])->name('nuevo-usuario');
 Route::post('/registro-usuario', [UserController::class, 'store'])->name('registro-usuario');
 
 ///////////////////////////////////////// CREAR UN NUEVO USUARIO /////////////////////////////////////////////////////////////////////////
@@ -67,6 +67,7 @@ Route::post('/guardar-categoria', [CategoriaSubcategoriaController::class, 'stor
 use App\Http\Controllers\MontrealController;
 
 Route::get('/montreal', [MontrealController::class, 'index'])->name('montreal');
+Route::get('/buscar-montreal', [MontrealController::class, 'buscarUsuariosMontreal'])->name('montrealsearch.users');
 
 ///////////////////////////////////////// CRUD MONTREAL /////////////////////////////////////////////////////////////////////////
 
@@ -76,13 +77,14 @@ Route::get('/montreal', [MontrealController::class, 'index'])->name('montreal');
 use App\Http\Controllers\BerlinController;
 
 Route::get('/berlin', [BerlinController::class, 'listarUsuariosSede2'])->name('berlin');
+Route::get('/buscar-berlin', [BerlinController::class, 'buscarUsuariosBerlin'])->name('berlinsearch.users');
 
 ///////////////////////////////////////// CRUD BERLIN /////////////////////////////////////////////////////////////////
 
 use App\Http\Controllers\BarcelonaController;
 
 Route::get('/barcelona', [BarcelonaController::class, 'index'])->name('barcelona');
-Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuarios']);
+Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuariosBarcelona'])->name('barcelonasearch.users');
 
 
 
@@ -103,7 +105,7 @@ Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuarios']);
 
 
 // Route::controller(GestorController::class)->group(function(){
-//     // Route::get('/','index')->name('index');
+//     Route::get('/','index')->name('index');
 //     Route::get('/create','create')->name('create');
 //     Route::get('/{id}','show')->name('show');
 //     Route::post('/','store')->name('store');
@@ -136,9 +138,9 @@ Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuarios']);
 
 use App\Http\Controllers\incidenciasController;
 
-Route::get('/', function () {
-    return view('tecnico.index');
-});
+// Route::get('/', function () {
+//     return view('tecnico.index');
+// });
 
 route::controller(incidenciasController::class)->group(function () {
     // route::post('/listar', 'index')->name('tecnico.index');
@@ -190,12 +192,12 @@ Route::get('form_cliente', [formularioController::class, 'mostrarFormulario']);
 
 Route::get('/crud_incidencias', [CrudController::class, 'mostrar']) ->name('mostrar');
 
-Route::post('/crud_incidencias', [CrudController::class, 'index']) ->name('index');
+Route::post('/crud_incidencias', [CrudController::class, 'incidencia']) ->name('incidencia');
 
     Route::get('/crud_incidencias/{id}', [CrudController::class, 'ver'])->name('crud_incidencias.ver');
     Route::get('/crud_incidencias/ver', [CrudController::class, 'ver'])->name('crud_incidencias.ver');
  
-Route::post('form_cliente', [ClienteController::class, 'store']) -> name('form_cliente.store');
+Route::post('form_cliente', [ClienteController::class, 'store']) -> name('admin.files.store');
 
 Route::get('form_cliente/create', [ClienteController::class, 'create']);
     // return "Aqui es donde se creara el cliente";

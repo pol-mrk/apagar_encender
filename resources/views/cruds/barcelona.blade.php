@@ -8,35 +8,35 @@
 <body>
   <h2>Lista de Usuarios Barcelona</h2>
 
-  <form id="search-form" action="{{ route('search.users') }}" method="GET">
+  <form id="search-form" action="{{ route('barcelonasearch.users') }}" method="GET">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre">
 
     <button type="submit">Buscar</button>
 </form>
 
-<form id="search-form1" action="{{ route('search.users') }}" method="GET">
+<form id="search-form1" action="{{ route('barcelonasearch.users') }}" method="GET">
     <label for="apellidos">Apellidos:</label>
     <input type="text" id="apellidos" name="apellidos">
 
     <button type="submit">Buscar</button>
 </form>
 
-<form id="search-form2" action="{{ route('search.users') }}" method="GET">
+<form id="search-form2" action="{{ route('barcelonasearch.users') }}" method="GET">
     <label for="fecha_inicio">Fecha de inicio:</label>
     <input type="date" id="fecha_inicio" name="fecha_inicio">
 
     <button type="submit">Buscar</button>
 </form>
 
-<form id="search-form3" action="{{ route('search.users') }}" method="GET">
+<form id="search-form3" action="{{ route('barcelonasearch.users') }}" method="GET">
     <label for="fecha_fin">Fecha de fin:</label>
     <input type="date" id="fecha_fin" name="fecha_fin">
 
     <button type="submit">Buscar</button>
 </form>
 
-<form id="search-form4" action="{{ route('search.users') }}" method="GET">
+<form id="search-form4" action="{{ route('barcelonasearch.users') }}" method="GET">
     <label for="rol">Rol:</label>
     <input type="text" id="rol" name="rol">
 
@@ -78,5 +78,10 @@
 
   </table>
 
+  <form action="{{ route('nuevo-usuario') }}" method="GET">
+    <button type="submit">Agregar nuevo empleado</button>
+</form>
+
+<a href="{{ route('sedes') }}">Volver</a>
 </body>
 </html>

@@ -1,8 +1,9 @@
 <?php
-
-use App\Http\Controllers\GestorController;
 use Illuminate\Support\Facades\Route;
-
+// TOdas las acciones que hace estan en el controlador de cliente
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\formularioController;
+use App\Http\Controllers\CrudController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,11 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(GestorController::class)->group(function(){
-    Route::get('/','index')->name('index');
-    Route::get('/create','create')->name('create');
-    Route::get('/{id}','show')->name('show');
-    Route::post('/','store')->name('store');
-    Route::get('/{id}/edit','edit')->name('edit');
-    Route::put('/{incidencia}','update')->name('update');
+Route::get('/', function () {
+    return view('welcome');
 });
+
+Route::get('/gestor', [CrudController::class, 'mostrar']) ->name('mostrar');
+
+Route::post('/gestor', [CrudController::class, 'index']) ->name('index');
+
+Route::get('/gestor/{id}', [CrudController::class, 'show'])->name('show');
+
+Route::put('/gestor/{incidencia}', [CrudController::class, 'update'])->name('update');

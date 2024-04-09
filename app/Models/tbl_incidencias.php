@@ -5,23 +5,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Incidencias extends Model
+class tbl_incidencias extends Model
 {
     use HasFactory;
-
-    protected $table = 'tbl_incidencias';
-
     public function subcategorias() {
-        return $this->belongsTo(Subcategorias::class);
+        return $this->belongsTo(tbl_subcategorias::class);
     }
     public function estados() {
-        return $this->belongsTo(Estados::class);
+        return $this->belongsTo(Estados::class, 'id_estado');
     }
     public function prioridades() {
-        return $this->belongsTo(Prioridades::class);
+        return $this->belongsTo(Prioridades::class,'id_prioridades');
     }
     public function usuarios() {
         return $this->belongsTo(Usuarios::class);
     }
-    
 }

@@ -12,6 +12,6 @@ class Prioridades extends Model
     protected $table = 'tbl_prioridades';
 
     public function incidencias() {
-        return $this->hasMany(Incidencias::class);
+        return $this->hasMany(tbl_incidencias::class);
     }
 }

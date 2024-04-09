@@ -9,7 +9,7 @@ class Usuarios extends Model
 {
     use HasFactory;
 
-    protected $table = 'tbl_usuarios';
+    protected $table = 'tbl_users';
 
     public function rol(){
         return $this->belongsTo(Roles::class);

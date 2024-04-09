@@ -25,7 +25,6 @@ class tbl_incidencias extends Seeder
                 'id_user' => 3,
                 'id_subcat' => 6,
                 'id_estado' => 1,
-                'id_prioridades' => 2,
                 'tecnico' => 1,
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -38,7 +37,6 @@ class tbl_incidencias extends Seeder
                 'id_user' => 3,
                 'id_subcat' => 7,
                 'id_estado' => 2,
-                'id_prioridades' => 3,
                 'tecnico' => 1,
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -51,7 +49,6 @@ class tbl_incidencias extends Seeder
                 'id_user' => 3,
                 'id_subcat' => 8,
                 'id_estado' => 3,
-                'id_prioridades' => 3,
                 'tecnico' => 1,
                 'created_at' => $now,
                 'updated_at' => $now,
@@ -64,11 +61,11 @@ class tbl_incidencias extends Seeder
                 'id_user' => 3,
                 'id_subcat' => 3,
                 'id_estado' => 5,
-                'id_prioridades' => 1,
                 'tecnico' => 1,
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
         ]);
     }
+    /** Run the database seeds.*/
 }

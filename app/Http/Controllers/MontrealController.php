@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usuarios; // Asegúrate de importar el modelo User si lo estás utilizando
+use App\Models\Usuarios; 
 use Illuminate\Support\Facades\DB;
 
 class MontrealController extends Controller
@@ -51,5 +51,11 @@ class MontrealController extends Controller
 
         // Devolver la vista con los usuarios o los datos JSON dependiendo de tus necesidades
         return view('cruds.montreal', compact('users'));
+    }
+    
+    public function destroy(Usuarios $user){
+        $user->delete();
+
+    return redirect()->route('montreal');
     }
 }

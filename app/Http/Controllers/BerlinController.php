@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Usuarios; 
 
 class BerlinController extends Controller
 {
@@ -51,6 +52,11 @@ class BerlinController extends Controller
         // Devolver la vista con los usuarios o los datos JSON dependiendo de tus necesidades
         return view('cruds.berlin', compact('users'));
     }
+    public function destroy(Usuarios $user){
+        $user->delete();
+
+    return redirect()->route('berlin');
+}
 }
 
 

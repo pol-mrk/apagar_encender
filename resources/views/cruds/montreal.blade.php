@@ -66,7 +66,11 @@
         <td>{{ $user->id_rol }}</td>
         <td>
             <a href='editar_usuario/{{ $user->id }}'>Editar</a>
-            <a href='dar_baja_usuario/{{ $user->id }}'>Dar de Baja</a>
+            <form action="{{ route('usuariomontreal.destroy', $user->id) }}" method="POST" style="display:inline;">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que quieres eliminar esta usuario?')">Dar de Baja</button>
+          </form>
         </td>
     </tr>
     @empty

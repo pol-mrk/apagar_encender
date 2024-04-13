@@ -23,6 +23,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/sedes', [LoginController::class, 'sedes'])->name('sedes');
 
 
+
 ///////////////////////////////////////// CREAR UN NUEVO USUARIO /////////////////////////////////////////////////////////////////////////
 
 use App\Http\Controllers\UserController;
@@ -68,6 +69,8 @@ use App\Http\Controllers\MontrealController;
 
 Route::get('/montreal', [MontrealController::class, 'index'])->name('montreal');
 Route::get('/buscar-montreal', [MontrealController::class, 'buscarUsuariosMontreal'])->name('montrealsearch.users');
+// Ruta personalizada para la eliminación
+Route::delete('/cruds/{user}', [MontrealController::class, 'destroy'])->name('usuariomontreal.destroy');
 
 ///////////////////////////////////////// CRUD MONTREAL /////////////////////////////////////////////////////////////////////////
 
@@ -78,6 +81,8 @@ use App\Http\Controllers\BerlinController;
 
 Route::get('/berlin', [BerlinController::class, 'listarUsuariosSede2'])->name('berlin');
 Route::get('/buscar-berlin', [BerlinController::class, 'buscarUsuariosBerlin'])->name('berlinsearch.users');
+// Ruta personalizada para la eliminación
+Route::delete('/cruds/{user}', [BerlinController::class, 'destroy'])->name('usuarioberlin.destroy');
 
 ///////////////////////////////////////// CRUD BERLIN /////////////////////////////////////////////////////////////////
 
@@ -85,6 +90,8 @@ use App\Http\Controllers\BarcelonaController;
 
 Route::get('/barcelona', [BarcelonaController::class, 'index'])->name('barcelona');
 Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuariosBarcelona'])->name('barcelonasearch.users');
+// Ruta personalizada para la eliminación
+Route::delete('/cruds/{user}', [BarcelonaController::class, 'destroy'])->name('usuariobarcelona.destroy');
 
 
 

@@ -19,8 +19,6 @@ class ClienteController extends Controller
 
     public function store(Request $request)
     {
-        // return $request->all();
-        // die();
         $request->validate([
             'titulo_inc' => 'required|min:3',
             'desc_inc' => ['required', 'min:10'],

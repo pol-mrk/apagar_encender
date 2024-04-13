@@ -101,36 +101,16 @@ Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuariosBarc
 
 // _____________________________________________ POL MARK ________________________________________________________
 
-// use App\Http\Controllers\GestorController;
+use App\Http\Controllers\CrudPolMarcController;
 
+Route::get('/gestor', [CrudPolMarcController::class, 'mostrar']) ->name('mostrar');
 
-// Route::controller(GestorController::class)->group(function(){
-//     Route::get('/','index')->name('index');
-//     Route::get('/create','create')->name('create');
-//     Route::get('/{id}','show')->name('show');
-//     Route::post('/','store')->name('store');
-//     Route::get('/{id}/edit','edit')->name('edit');
-//     Route::put('/{incidencia}','update')->name('update');
-// });
+Route::post('/gestor', [CrudPolMarcController::class, 'index']) ->name('index');
+
+Route::get('/gestor/{id}', [CrudPolMarcController::class, 'show'])->name('show');
+
+Route::put('/gestor/{incidencia}', [CrudPolMarcController::class, 'update'])->name('update');
 // _____________________________________________ POL MARK ________________________________________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -138,47 +118,13 @@ Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuariosBarc
 
 use App\Http\Controllers\incidenciasController;
 
-// Route::get('/', function () {
-//     return view('tecnico.index');
-// });
-
 route::controller(incidenciasController::class)->group(function () {
-    // route::post('/listar', 'index')->name('tecnico.index');
     Route::post('/listar', 'index')->name('index');
     Route::post('/estado', 'estado')->name('estado');
-    // Route::post('/chat/{id}', 'chat')->name('chat');
-    // Route::post('/mensaje', 'envmensaje')->name('mensaje');
-    route::get('/tecnico/{id}', 'chat')->name('tecnico.chat');
+    Route::get('/tecnico/{id}', 'chat')->name('tecnico.chat');
+    Route::get('/tecnicoIndex', 'tecnicoIndex')->name('tecnico.index');
 });
-
-// Route::post('/listar', [incidenciasController::class, 'index'])->name('index');
-// Route::post('/estado', [incidenciasController::class, 'estado'])->name('estado');
-// Route::post('/chat/{id}', [incidenciasController::class, 'chat'])->name('chat');
-// Route::post('/mensaje', [incidenciasController::class, 'envmensaje'])->name('mensaje');
-
 // _____________________________________________ JULIO CESAR ________________________________________________________
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -197,10 +143,9 @@ Route::post('/crud_incidencias', [CrudController::class, 'incidencia']) ->name('
     Route::get('/crud_incidencias/{id}', [CrudController::class, 'ver'])->name('crud_incidencias.ver');
     Route::get('/crud_incidencias/ver', [CrudController::class, 'ver'])->name('crud_incidencias.ver');
  
-Route::post('form_cliente', [ClienteController::class, 'store']) -> name('admin.files.store');
+Route::post('form_cliente', [ClienteController::class, 'store']) -> name('form_cliente.store');
 
 Route::get('form_cliente/create', [ClienteController::class, 'create']);
-    // return "Aqui es donde se creara el cliente";
 
 Route::get('form_cliente/{cliente}', [ClienteController::class, 'show']);
 // _____________________________________________ IAN ROMERO ________________________________________________________

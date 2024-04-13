@@ -4,7 +4,7 @@
 
 <div class="container">
     <h1>FORM | INCIDENCIAS</h1>
-    <form action="{{ route('admin.files.store') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('form_cliente.store') }}" method="post" enctype="multipart/form-data">
         @csrf 
         <input type="text" name="titulo_inc" class="form-control" placeholder="Titulo..." value="{{ old('titulo_inc') }}">
 

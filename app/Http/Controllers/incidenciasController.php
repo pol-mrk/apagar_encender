@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\DB;
 
 class incidenciasController extends Controller
 {
+    public function tecnicoIndex()
+    {
+        return view('tecnico.index');
+    }
+
     public function index(Request $request)
     {
         $estados = tbl_estados::all();
@@ -82,6 +87,21 @@ class incidenciasController extends Controller
             ->get();
         return view('tecnico.chat', compact('incidencias', 'estados', 'mensajes'));
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function envmensaje(Request $request)
     {

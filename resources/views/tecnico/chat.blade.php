@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <a href="{{ url('/') }}" class="btn btn-primary">Ir a la página principal</a>
+    <a href="{{ url('/tecnicoIndex') }}" class="btn btn-primary">Ir a la página principal</a>
 
     <div>
         <div id="incidencias">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\tbl_incidencias;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ClienteController extends Controller
 {
@@ -25,21 +26,26 @@ class ClienteController extends Controller
             'fecha_inc' => 'required',
             'file' => 'image',
             'id_subcat' => 'required',
-            'id_user' => 'required',
             'id_estado' => 'required',
-            'tecnico' => 'required'
         ]);
+        
+        // Guardar la imagen
+        $imagenPath = $request->file('file')->store('public/img');
+        // Obtener la URL de la imagen
+        $url = Storage::url($imagenPath);
 
         $incidencia = new tbl_incidencias();
 
         $incidencia->titulo_inc = $request->titulo_inc;
         $incidencia->desc_inc = $request->desc_inc;
         $incidencia->fecha_inc = $request->fecha_inc;
-        $incidencia->foto_inc = $request->foto_inc;
+        $incidencia->foto_inc = $url;
         $incidencia->id_subcat = $request->id_subcat;
-        $incidencia->id_user = $request->id_user;
         $incidencia->id_estado = $request->id_estado;
-        $incidencia->tecnico = $request->tecnico;
+        $incidencia->tecnico = 1;
+
+        // Obtener el ID del usuario autenticado
+        $incidencia->id_user = auth()->id();
 
         $incidencia->save();
     }

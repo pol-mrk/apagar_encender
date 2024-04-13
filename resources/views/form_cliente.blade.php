@@ -43,7 +43,7 @@
         @enderror
         <br>
         <label for="file">Añade una imagen:</label>
-        <input type="file" name="file" id="foto_inc" accept="image/*">
+        <input type="file" name="file" id="file" accept="image/*">
         @error('file')
         <br>
         <span>*{{ $message }}</span> 

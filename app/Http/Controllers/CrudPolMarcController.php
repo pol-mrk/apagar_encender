@@ -254,7 +254,7 @@ if (in_array($filtro['fecha'], ['asc', 'desc'])) {
         return response()->json(['incidencias' => $incidencias, 'estados' => $filtro]);
     }
 
-    public function mostrar()
+    public function gestor()
     {
         return view('crud_incidencias.index');
     }

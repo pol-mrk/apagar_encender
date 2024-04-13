@@ -4,43 +4,58 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Usuarios;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    public function showLoginForm()
+    public function sedes()
     {
-        return view('login');
+        return view('sedes');
     }
 
-    public function login(Request $request)
-    {
-        $credentials = $request->only('correo_user', 'pwd_user');
+    public function login(Request $request){
 
-        $usuario = Usuarios::where('correo_user', $credentials['correo_user'])->first();
+    // Validar los datos del formulario
+    $request->validate([
+        'correo_user' => 'required|email',
+        'pwd_user' => 'required',
+    ]);
 
-        if ($usuario && $credentials['pwd_user'] === $usuario->pwd_user) {
-            // Inicio de sesión exitoso
-            // Redirige dependiendo del ID del usuario
-            if ($usuario->id == 1) {
-                return redirect()->route('ruta_para_usuario_1');
-            } elseif ($usuario->id == 2) {
-                return redirect()->route('ruta_para_usuario_2');
-            } elseif ($usuario->id == 3) {
-                return redirect()->route('ruta_para_usuario_3');
-            } else {
-                // Si no se especifica una ruta para el ID de usuario dado, redirige a una ruta por defecto
-                return redirect()->route('default_route');
+    // Recuperar datos del formulario
+    $email = $request->input('correo_user');
+    $pwd = $request->input('pwd_user');
+
+    // Recuperar usuario por correo electronico usando Eloquent
+    $user = Usuarios::where('correo_user', $email)->first();
+ 
+    if ($user) {
+        $pwd_encriptada = $user->pwd_user;
+        // Verificar si la contraseña ingresada coincide con la contraseña encriptada en la base de datos
+        if (password_verify($pwd, $pwd_encriptada)) {
+            // Autenticación exitosa
+            Auth::login($user);
+            // Redirigir al usuario según su rol
+            if ($user->id_rol == 1) {
+                return redirect()->route('sedes');
+            } elseif ($user->id_rol == 2) {
+                return redirect()->route('mostrar');
+            } elseif ($user->id_rol == 3) {
+                return redirect()->route('tecnico.index');
+            } elseif ($user->id_rol == 4) {
+                return redirect()->route('mostrar');
             }
-        } else {
-            // Error en las credenciales de inicio de sesión
-            return back()->withInput()->withErrors(['correo_user' => 'Correo electrónico o contraseña incorrectos']);
         }
     }
 
+    // Autenticación fallida
+    return redirect()->route('login')->with('error', 'errorpwd');
+}
+
+
     public function logout()
     {
-        // Código para cerrar sesión
-        // Esto puede variar dependiendo del sistema de autenticación que estés utilizando
-        // Por ejemplo, si estás utilizando el paquete Laravel Jetstream, puedes usar Auth::logout();
+        // Cerrar sesión
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

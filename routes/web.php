@@ -15,12 +15,12 @@ use App\Http\Controllers\LoginController;
 */
 
 Route::get('/', function () {
-    return view('sedes');
-})->name('sedes');
+    return view('login');
+})->name('login');
 
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login/process', [LoginController::class, 'login'])->name('login.process');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('/sedes', [LoginController::class, 'sedes'])->name('sedes');
 
 
 ///////////////////////////////////////// CREAR UN NUEVO USUARIO /////////////////////////////////////////////////////////////////////////
@@ -88,22 +88,11 @@ Route::get('/buscar-barcelona', [BarcelonaController::class, 'buscarUsuariosBarc
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 // _____________________________________________ POL MARK ________________________________________________________
 
 use App\Http\Controllers\CrudPolMarcController;
 
-Route::get('/gestor', [CrudPolMarcController::class, 'mostrar']) ->name('mostrar');
+Route::get('/gestor', [CrudPolMarcController::class, 'gestor']) ->name('gestor');
 
 Route::post('/gestor', [CrudPolMarcController::class, 'index']) ->name('index');
 
@@ -123,6 +112,7 @@ route::controller(incidenciasController::class)->group(function () {
     Route::post('/estado', 'estado')->name('estado');
     Route::get('/tecnico/{id}', 'chat')->name('tecnico.chat');
     Route::get('/tecnicoIndex', 'tecnicoIndex')->name('tecnico.index');
+    // Route::get('/sedes', [LoginController::class, 'sedes'])->name('sedes');
 });
 // _____________________________________________ JULIO CESAR ________________________________________________________
 

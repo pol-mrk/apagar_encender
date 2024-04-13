@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -23,7 +24,7 @@ class tbl_users extends Seeder
                 'correo_user' => 'julio@gmail.com',
                 'fecha_ini_user' => $now,
                 'fecha_fin_user' => '2024-06-14 13:00:00',
-                'pwd_user' => 'asdASD123',
+                'pwd_user' => Hash::make('asdASD123'), // Encriptar la contraseña usando bcrypt
                 'estado' => 'activo',
                 'id_rol' => 3,
                 'id_sede' => 2,
@@ -36,7 +37,7 @@ class tbl_users extends Seeder
                 'correo_user' => 'polmarc@gmail.com',
                 'fecha_ini_user' => $now,
                 'fecha_fin_user' => '2024-08-24 14:00:00',
-                'pwd_user' => 'asdASD123',
+                'pwd_user' => Hash::make('asdASD123'), // Encriptar la contraseña usando bcrypt
                 'estado' => 'activo',
                 'id_rol' => 2,
                 'id_sede' => 1,
@@ -49,7 +50,7 @@ class tbl_users extends Seeder
                 'correo_user' => 'ianromero@gmail.com',
                 'fecha_ini_user' => $now,
                 'fecha_fin_user' => '2024-10-04 15:00:00',
-                'pwd_user' => 'asdASD123',
+                'pwd_user' => Hash::make('asdASD123'), // Encriptar la contraseña usando bcrypt
                 'estado' => 'activo',
                 'id_rol' => 4,
                 'id_sede' => 3,
@@ -62,7 +63,7 @@ class tbl_users extends Seeder
                 'correo_user' => 'sergiocallejas@gmail.com',
                 'fecha_ini_user' => $now,
                 'fecha_fin_user' => '2024-11-30 16:00:00',
-                'pwd_user' => 'asdASD123',
+                'pwd_user' => Hash::make('asdASD123'), // Encriptar la contraseña usando bcrypt
                 'estado' => 'activo',
                 'id_rol' => 1,
                 'id_sede' => 1,

@@ -14,7 +14,7 @@
   </div>
     <div class="login-box">
       <h2>Inicio de Sesión</h2>
-      <form method="POST" action="{{ route('login') }}">
+      <form method="POST" action="{{ route('login.process') }}">
         @csrf
         <div class="user-box">
           <input type="text" name="correo_user" required="">

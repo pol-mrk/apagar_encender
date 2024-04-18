@@ -40,7 +40,7 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
     formdata.append('incidencia', nombre_incidencia);
     formdata.append('usuario', usuario_incidencia);
     formdata.append('estado', estadosFiltro);
-    console.log(estadosFiltro);
+    console.log(estadosFiltro); 
     var ajax = new XMLHttpRequest();
     ajax.open('post', '/listar');
     ajax.onload = function () {
@@ -48,6 +48,8 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
             var json = JSON.parse(ajax.responseText);
             var incidencias = json.incidencias;
             var estados = json.estados;
+            console.log(estados);
+            console.log(incidencias);
             var tabla = '';
             if (filtro === 1) {
                 var estadosfiltro = document.getElementById('filtroestado');

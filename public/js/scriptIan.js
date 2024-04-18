@@ -223,7 +223,9 @@ function ListarIncidencias(buscar, status_id, fecha_inc, resolta) {
             });
 
             resultado.innerHTML = tabla;
-        
+            console.log(incidencias);
+            console.log(resultado);
+
 
         } else {
             // Si no se recibe un status 200, indica que ha habido un error en la petición AJAX

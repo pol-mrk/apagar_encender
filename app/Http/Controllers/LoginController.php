@@ -38,7 +38,7 @@ class LoginController extends Controller
             if ($user->id_rol == 1) {
                 return redirect()->route('sedes');
             } elseif ($user->id_rol == 2) {
-                return redirect()->route('mostrar');
+                return redirect()->route('gestor');
             } elseif ($user->id_rol == 3) {
                 return redirect()->route('tecnico.index');
             } elseif ($user->id_rol == 4) {

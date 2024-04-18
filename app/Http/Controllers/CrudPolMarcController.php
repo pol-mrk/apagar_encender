@@ -156,7 +156,7 @@ if (in_array($filtro['fecha'], ['asc', 'desc'])) {
         //     $incidencias->orderBy('desc_inc', $fecha);
         // }
 
-        $incidencias = $incidencias->get();
+            $incidencias = $incidencias->get();
 
         
 
@@ -256,7 +256,7 @@ if (in_array($filtro['fecha'], ['asc', 'desc'])) {
 
     public function gestor()
     {
-        return view('crud_incidencias.index');
+        return view('crud_incidenciaspolmark.indexpolmark');
     }
 
     // Funciones gestor
@@ -279,7 +279,7 @@ if (in_array($filtro['fecha'], ['asc', 'desc'])) {
 
         $tecnicos = Usuarios::all();
         $prioridades = Prioridades::all();
-        return view('crud_incidencias.mostrar',compact('incidencia','tecnicos','prioridades'));
+        return view('crud_incidenciaspolmark.mostrarpolmarc',compact('incidencia','tecnicos','prioridades'));
     }
 
     public function update(Request $request, tbl_incidencias $incidencia){

@@ -113,7 +113,7 @@
    
 <!-- <script src="/js/script.js"></script> Modificado por el asset -->
 <!-- El archivo JS lo pondremos en public/js con lo que usaremos el helper asset -->
-<script src="{{ asset('js/scriptIan.js') }}"></script>
+<script src="{{ asset('js/scriptPolMarc.js') }}"></script>
 
    
 </body>

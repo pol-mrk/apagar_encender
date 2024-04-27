@@ -2,6 +2,7 @@
 @section('title', 'Gestor de equipo')
 @section('content')
 <br><br><br>
+<div id="section1">
     <h1>Incidencia {{$incidencia->titulo_inc}}</h1>
     <a href="{{route('index')}}">Volver a página de incidencias</a>
 
@@ -40,6 +41,7 @@
         </label>      
         <br><br>
         <button type="submit">Actualizar formulario</button>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </form>
+</div>
+<link rel="stylesheet" href="{{asset('css/style.css')}}"> <!-- Añade los estilos CSS -->
 @endsection

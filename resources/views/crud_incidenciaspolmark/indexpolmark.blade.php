@@ -3,86 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CRUD php Vanilla</title>
+  <title>Gestor de equipo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
   <!-- Se ha de añadir el token para poder usarlo en el formdata de AJAX -->
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="stylesheet" href="{{asset('css/style2.css')}}">
 </head>
 <body>
 <div class="container" style="border:1px solid">
   <div class="row">
-    
-
-    <a href="/form_cliente" class="btn btn-primary">Crear Incidencia</a>
-
-
-
-
-    <!-- Zona de la derecha usando 8 de las 12 columnas de Bootstrap -->
-    <div class="col-lg-8" style="border:1px solid">
-      <!-- Primero (zona superior) un DIV con el formulario de búsqueda -->
-      <div class="row">
-        <div class="col-lg-12 ml-auto" style="border:1px solid">
-          <form action="" method="post" id="frmbusqueda">
-            <div class="form-group">
-              <label for="buscar">Buscar:</label>
-              <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control">
-
-
-             {{-- <div id="estados"></div> --}}
-              <div>
-                <br>
-                <form action="" method="post">
-                  <select class="form-control status_id" id="status_id" name="status_id">
-                      <option value="0">Seleccione Estado... </option> 
-                      <option value="1">Sense Assignar</option>
-                      <option value="2">Assignada</option>
-                      <option value="3">En treball</option>
-                      <option value="4">Resolta</option>
-                      <option value="5">Tancada</option>
-                  </select>
+    <div id="section1">
+      <div class="flex">
+        <form action="" method="post" id="frmbusqueda">
+          <div class="form-group filtros">
+            <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control">
+            <div class="filtros">
+              <form action="" method="post">
+                <select class="form-control status_id" id="status_id" name="status_id">
+                  <option value="0">Seleccione Estado... </option> 
+                  <option value="1">Sense Assignar</option>
+                  <option value="2">Assignada</option>
+                  <option value="3">En treball</option>
+                  <option value="4">Resolta</option>
+                  <option value="5">Tancada</option>
+                </select>
               </form>
-              
-                
-            <br>
-               
-                  <select class="form-control status_id" id="fecha_inc">
-                      <option value="0">Seleccione Fecha...</option>
-                      <option value="asc">Fecha ascendente</option>
-                      <option value="desc">Fecha descendente</option>
-                  </select>
-                 
+
+              <select class="form-control status_id" id="fecha_inc">
+                <option value="0">Seleccione Fecha...</option>
+                <option value="asc">Fecha ascendente</option>
+                <option value="desc">Fecha descendente</option>
+              </select>
               <input type="button" name="resolta" id="resolta" value="Quitar Resoltas">
-              
-                {{-- <select name="id_estado">
-                  @foreach($estados as $estado)
-                      <option value="{{ $estado->id }}">{{ $estado->nombre_estado }}</option>
-                  @endforeach
-              </select> --}}
-
-              <div>
-                {{-- <label for="ordenar">Ordenar por:</label>
-                <select id="ordenar" onchange="ordenarIncidencias()">
-                    <option value="titulo_inc_asc">Título ascendente</option>
-                    <option value="titulo_inc_desc">Título descendente</option>
-                    <option value="fecha_inc_asc">Fecha ascendente</option>
-                    <option value="fecha_inc_desc">Fecha descendente</option>
-                    <!-- Agrega más opciones según tus necesidades -->
-                </select> --}}
-
-
-                
-            </div>
-            
-            </div>
-          </form>
-        </div>
+            </div>     
+          </div>
+        </form>
       </div>
-
+    </div>
       <!-- Segundo una tabla con los datos del CRUD a mostrar -->
-      <div class="col-lg-12 ml-auto" style="border:1px solid">
-        <table class="table table-hover table-responsive">
-          <thead class="thead-dark">
+      <div>
+        <table style="border-radius: 10px">
+          <thead>
             <tr>
               <th>Titulo</th>
               <th>Descripción</th>
@@ -90,7 +53,8 @@
               <th>Foto</th>
               <th>Subcategoria</th>
               <th>Estado</th>
-              <th>Tecnico</th>
+              <th>Prioridad</th>
+              <th>Técnico</th>
               <th>Detalles</th>
             </tr>
           </thead>
@@ -101,7 +65,6 @@
           </tbody>
         </table>
       </div>
-    </div>
   </div>
 </div>
 <!-- Fin de row -->

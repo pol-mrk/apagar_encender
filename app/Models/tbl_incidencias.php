@@ -15,6 +15,6 @@ class tbl_incidencias extends Model
         return $this->belongsTo(Estados::class, 'id_estado');
     }
     public function usuarios() {
-        return $this->belongsTo(Usuarios::class);
+        return $this->belongsTo(Usuarios::class, 'tecnico');
     }
 }

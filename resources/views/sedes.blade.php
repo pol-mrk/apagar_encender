@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Sedes</title>
+    <title>CodePen - No script accordion animation</title>
     <link rel="stylesheet" href="{{ asset('css/sedes.css') }}">
 </head>
 <body>
@@ -14,11 +14,11 @@
             <img src="{{ asset('img/sede_alemania.jpeg') }}" class="profile_image" alt="Profile" />
             <div class="profile_detail">
                 <span>Berlin, Alemania</span>
-                <p>UI/UX Designer + Graphic Designer</p>
+                <p>Sede de Berlin</p>
             </div>
             <div class="wrapper">
                 <div class="profile_quote">
-                    <p>"UI is the saddle, the stirrups, & the reins. UX is the feeling you get being able to ride the horse."</p>
+                    <p>Ver incidendias de Alemania</p>
                 </div>
             </div>
         </a>
@@ -28,11 +28,11 @@
             <img src="{{ asset('img/sede_barcelona.jpg') }}" class="profile_image" alt="Profile" />
             <div class="profile_detail">
                 <span>Barcelona, España</span>
-                <p>Photographer + Model</p>
+                <p>Sede de Barcelona</p>
             </div>
             <div class="wrapper">
                 <div class="profile_quote">
-                    <p>"If you see something that moves you, and then snap it, you keep a moment."</p>
+                    <p>Ver incicendias de Barcelona</p>
                 </div>
             </div>
         </a>
@@ -41,12 +41,12 @@
             <img src="{{ asset('img/canada.jpg') }}" class="profession_image" alt="Profession" />
             <img src="{{ asset('img/sede_canada.jpg') }}" class="profile_image" alt="Profile" />
             <div class="profile_detail">
-                <span>Montreal, Canada</span>
-                <p>Fashion Designer + Model</p>
+                <span>Montreal, Canadá</span>
+                <p>Sede de Canadá</p>
             </div>
             <div class="wrapper">
                 <div class="profile_quote">
-                    <p>"My mission in life is not merely to survive, but to thrive and to do so with some passion, some compassion, some humor, and some style."</p>
+                    <p>Ver incicendias de Canadá</p>
                 </div>
             </div>
         </a>

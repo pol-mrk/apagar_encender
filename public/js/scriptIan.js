@@ -207,16 +207,14 @@ function ListarIncidencias(buscar, status_id, fecha_inc, resolta) {
             // Cada elemento del objeto json representa un registro de una tabla
             incidencias.forEach(function (item) {
                 var str = "<tr>";
-                str += "<td>" + item.titulo_inc + "</td>";
-                str += "<td>" + item.desc_inc + "</td>";
-                str += "<td>" + item.fecha_inc + "</td>";
-                str += "<td>" + item.foto_inc + "</td>";
-                str += "<td>" + item.nombre_subcat + "</td>";
-                str += "<td>" + item.id_estado + "</td>";
-                str += "<td>" + item.nombre_user + "</td>";
-                // str += "<td><a href='{{ route('ver') }}?id=" + item.id + "'>Detalles</a></td>";
-                str += "<td><a href='/crud_incidencias/" + item.id + "'>Detalles</a></td>";
-                // str += '<td><a href="/crud_incidencias/ver" class="btn btn-primary">Detalles</a></td>';
+                str += "<td style='color:white;'>" + item.titulo_inc + "</td>";
+                str += "<td style='color:white;'>" + item.desc_inc + "</td>";
+                str += "<td style='color:white;'>" + item.fecha_inc + "</td>";
+                str += "<td style='color:white;'>" + item.foto_inc + "</td>";
+                str += "<td style='color:white;'>" + item.nombre_subcat + "</td>";
+                str += "<td style='color:white;'>" + item.nombre_estado + "</td>";
+                str += "<td style='color:white;'>" + item.nombre_user + "</td>";
+                str += "<td style='color:white;'><a class='detalles' href='/crud_incidencias/" + item.id + "'>Detalles</a></td>";
                 str += "</td>";
                 str += "</tr>";
                 tabla += str;

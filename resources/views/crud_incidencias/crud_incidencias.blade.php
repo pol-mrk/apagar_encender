@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gestor de equipo</title>
+  <title>Cliente</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
       <div class="flex">
         <form action="" method="post" id="frmbusqueda">
           <div class="form-group filtros">
-            <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control">
+            <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control" style="margin-left: 10px">
             <div class="filtros">
               <form action="" method="post">
                 <select class="form-control status_id" id="status_id" name="status_id">
@@ -37,6 +37,9 @@
                 <option value="desc">Fecha descendente</option>
               </select>
               <input type="button" name="resolta" id="resolta" value="Quitar Resoltas">
+              <form action="/form_cliente" method="get">
+                <input type="submit" value="Crear Incidencia" class="flex" id="resolta">
+              </form>
             </div>     
           </div>
         </form>

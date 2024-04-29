@@ -66,15 +66,15 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
             incidencias.forEach(function (item) {
 
                 
-                var str = "<tr><td>" + item.titulo_inc + "</td>";
-                str += "<td>" + item.desc_inc + "</td>";
-                str += "<td>" + item.created_at + "</td>";
-                str += "<td>" + item.nombre_user + "</td>";
-                str += "<td>" + item.nombre_sub_cat + "</td>";
+                var str = "<tr><td style='color:white;'>" + item.titulo_inc + "</td>";
+                str += "<td style='color:white;'>" + item.desc_inc + "</td>";
+                str += "<td style='color:white;'>" + item.created_at + "</td>";
+                str += "<td style='color:white;'>" + item.nombre_user + "</td>";
+                str += "<td style='color:white;'>" + item.nombre_sub_cat + "</td>";
                 if (item.id_estado !== 5) {
-                    str += "<td><form action='' method='post' id='frm'>";
+                    str += "<td style='color:white;'><form action='' method='post' id='frm'>";
                     str += "<input type='hidden' name='idp' id='idp' value='" + item.id + "'>";
-                    str += "<select name='estado' id='estado' class='estado'>";
+                    str += "<select name='estado' id='estado' class='estado label3'>";
                     estados.forEach(function (estado) {
                         if (estado.id !== 1 && estado.id !== 5) {
                             str += "<option value='" + estado.id + "'";
@@ -87,10 +87,10 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
                     str += "</select>";
                     str += "</form></td>";
                 } else {
-                    str += "<td>" + item.nombre_estado + "</td>";
+                    str += "<td style='color:white;'>" + item.nombre_estado + "</td>";
                 }
-                str += "<td>" + (item.nombre_tecnico || 'Sin asignar') + "</td>";
-                str += "<td><a href='tecnico/" + item.id + "'>chat</a></td></tr>";
+                str += "<td style='color:white;'>" + (item.nombre_tecnico || 'Sin asignar') + "</td>";
+                str += "<td style='color:white;'><a class='detalles' href='tecnico/" + item.id + "'>chat</a></td></tr>";
                 tabla += str;
             });
             resultado.innerHTML = tabla;

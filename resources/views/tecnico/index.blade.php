@@ -5,80 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf_token" content="{{ csrf_token() }}">
-    <title>Tecnico</title>
+    <title>Técnico</title>
+    <link rel="stylesheet" href="{{ asset('/css/incidencias.css') }}">
 </head>
-<style>
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
-    }
-
-    th,
-    td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-
-    th {
-        background-color: #f2f2f2;
-        font-weight: bold;
-    }
-
-    tbody tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    tbody tr:hover {
-        background-color: #ddd;
-    }
-</style>
 
 <body>
-    <div class="col-lg-12 ml-auto" style="border:1px solid">
-        <form action="" method="post" id="frmbusqueda">
-            <div class="form-group">
-                <label for="incidencia">Incidencia:</label>
-                <input type="text" name="incidencia" id="incidencia" placeholder="Buscar...">
+    <div class="container">
+        <div class="form">
+            <form action="" method="post" id="frmbusqueda">
+                <div class="form-group">
+                    <label for="incidencia">Incidencia:</label>
+                    <input type="text" name="incidencia" id="incidencia" placeholder="Buscar...">
+                </div>
+            </form>
+            <form action="" method="post" id="frmbusqueda">
+                <div class="form-group">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" name="usuario" id="usuario" placeholder="Buscar...">
+                </div>
+            </form>
+
+            <div id="estadosfiltro">
+                <form action="" method="post" id="frmbusqueda">
+                    <label for="estado">Estado:</label><br>
+                    <select name="filtroestado" id="filtroestado">
+                    </select>
+                </form>
             </div>
-        </form>
-    </div>
-    <hr>
-
-    <div class="col-lg-12 ml-auto" style="border:1px solid">
-        <form action="" method="post" id="frmbusqueda">
-            <div class="form-group">
-                <label for="usuario">Usuario:</label>
-                <input type="text" name="usuario" id="usuario" placeholder="Buscar...">
-            </div>
-        </form>
-    </div>
-    <hr>
-
-    <div id="estadosfiltro">
-        <form action="" method="post" id="frmbusqueda">
-            <label for="estado">Estado:</label><br>
-            <select name="filtroestado" id="filtroestado">
-            </select>
-        </form>
-    </div>
-    <hr>
-
-    <div>
-        <table>
-            <thead>
-                <td>Incidencia</td>
-                <td>Descripcion</td>
-                <td>Fecha</td>
-                <td>Usuario</td>
-                <td>Categoria</td>
-                <td>Estado</td>
-                <td>Tecnico</td>
-            </thead>
-            <tbody id="incidencias">
-            </tbody>
-        </table>
+        </div>
+        <hr>
+        <div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Incidencia</th>
+                        <th>Descripción</th>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Categoría</th>
+                        <th>Estado</th>
+                        <th>Técnico</th>
+                    </tr>
+                </thead>
+                <tbody id="incidencias">
+                </tbody>
+            </table>
+        </div>
     </div>
 </body>
 <script src="{{ asset('/js/scriptJulio.js') }}"></script>

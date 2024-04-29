@@ -13,43 +13,45 @@ class LoginController extends Controller
         return view('sedes');
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
-    // Validar los datos del formulario
-    $request->validate([
-        'correo_user' => 'required|email',
-        'pwd_user' => 'required',
-    ]);
+        // Validar los datos del formulario
+        $request->validate([
+            'correo_user' => 'required|email',
+            'pwd_user' => 'required',
+        ]);
 
-    // Recuperar datos del formulario
-    $email = $request->input('correo_user');
-    $pwd = $request->input('pwd_user');
+        // Recuperar datos del formulario
+        $email = $request->input('correo_user');
+        $pwd = $request->input('pwd_user');
 
-    // Recuperar usuario por correo electronico usando Eloquent
-    $user = Usuarios::where('correo_user', $email)->first();
- 
-    if ($user) {
-        $pwd_encriptada = $user->pwd_user;
-        // Verificar si la contraseña ingresada coincide con la contraseña encriptada en la base de datos
-        if (password_verify($pwd, $pwd_encriptada)) {
-            // Autenticación exitosa
-            Auth::login($user);
-            // Redirigir al usuario según su rol
-            if ($user->id_rol == 1) {
-                return redirect()->route('sedes');
-            } elseif ($user->id_rol == 2) {
-                return redirect()->route('gestor');
-            } elseif ($user->id_rol == 3) {
-                return redirect()->route('tecnico.index');
-            } elseif ($user->id_rol == 4) {
-                return redirect()->route('mostrar');
+        // Recuperar usuario por correo electronico usando Eloquent
+        $user = Usuarios::where('correo_user', $email)->first();
+        session(['id_user' => $user->id]);
+        session(['id_sede' => $user->id_sede]);
+        if ($user) {
+            $pwd_encriptada = $user->pwd_user;
+            // Verificar si la contraseña ingresada coincide con la contraseña encriptada en la base de datos
+            if (password_verify($pwd, $pwd_encriptada)) {
+                // Autenticación exitosa
+                Auth::login($user);
+                // Redirigir al usuario según su rol
+                if ($user->id_rol == 1) {
+                    return redirect()->route('sedes');
+                } elseif ($user->id_rol == 2) {
+                    return redirect()->route('gestor');
+                } elseif ($user->id_rol == 3) {
+                    return redirect()->route('tecnico.index');
+                } elseif ($user->id_rol == 4) {
+                    return redirect()->route('mostrar');
+                }
             }
         }
-    }
 
-    // Autenticación fallida
-    return redirect()->route('login')->with('error', 'errorpwd');
-}
+        // Autenticación fallida
+        return redirect()->route('login')->with('error', 'errorpwd');
+    }
 
 
     public function logout()

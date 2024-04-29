@@ -19,16 +19,21 @@ class incidenciasController extends Controller
 
     public function index(Request $request)
     {
+        $id_user = session('id_user');
+        $id_sede = session('id_sede');
         $estados = tbl_estados::all();
         $connsulta = DB::table('tbl_incidencias')
             ->join('tbl_users as users', 'users.id', '=', 'tbl_incidencias.id_user')
             ->join('tbl_subcategorias as subcat', 'subcat.id', '=', 'tbl_incidencias.id_subcat')
             ->join('tbl_estados as estado', 'estado.id', '=', 'tbl_incidencias.id_estado')
             ->join('tbl_users as tecnico', 'tecnico.id', '=', 'tbl_incidencias.tecnico')
-            ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico')
+            ->join('tbl_prioridades', 'tbl_prioridades.id', '=', 'tbl_incidencias.id_prioridades')
+            ->select('tbl_incidencias.*', 'users.nombre_user', 'subcat.nombre_sub_cat', 'estado.nombre_estado', 'tecnico.nombre_user as nombre_tecnico','tecnico.id_sede as sede')
+            ->where('tecnico.id_sede', $id_sede)           //Id de la sesion
+            ->where('tecnico.id', $id_user)
             ->where('tecnico', 1)
             ->where('estado.id', '>', 1)
-            ->orderBy('tbl_incidencias.id', 'asc');
+            ->orderBy('tbl_incidencias.id_prioridades', 'desc');
 
         if ($request->input('usuario')) {
             $usuario = $request->input('usuario');

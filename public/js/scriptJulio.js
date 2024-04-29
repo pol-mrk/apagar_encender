@@ -9,10 +9,10 @@ usuario.addEventListener("keyup", actualizarFiltro);
 
 let estadosFiltro = '';
 
-function actualizarFiltro(estadosFiltro = "") {
+function actualizarFiltro(estadosFiltroParam = "") {
     const nombre_incidencia = incidencia.value;
     const usuario_incidencia = usuario.value;
-    // console.log('asdasd' + estadosFiltro);
+    estadosFiltro = estadosFiltroParam;
     listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro, 2);
 }
 
@@ -40,7 +40,7 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
     formdata.append('incidencia', nombre_incidencia);
     formdata.append('usuario', usuario_incidencia);
     formdata.append('estado', estadosFiltro);
-    console.log(estadosFiltro); 
+    console.log(estadosFiltro);
     var ajax = new XMLHttpRequest();
     ajax.open('post', '/listar');
     ajax.onload = function () {
@@ -64,8 +64,6 @@ function listarincidencias(nombre_incidencia, usuario_incidencia, estadosFiltro,
             }
 
             incidencias.forEach(function (item) {
-
-                
                 var str = "<tr><td>" + item.titulo_inc + "</td>";
                 str += "<td>" + item.desc_inc + "</td>";
                 str += "<td>" + item.created_at + "</td>";
@@ -134,7 +132,7 @@ function enviarFormulario(form) {
         } else {
             Swal.fire({
                 icon: 'error',
-                title: 'No se puedo cambiar al estado ' + estadoSelectedText
+                title: 'No se pudo cambiar al estado ' + estadoSelectedText
             });
         }
     }

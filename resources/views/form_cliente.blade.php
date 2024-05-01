@@ -9,7 +9,7 @@
         <div class="flex">
             <a href="/crud_incidencias" class="detalles">Volver</a>
         </div>
-        <form action="{{ route('form_cliente.store') }}" method="post" class="formCreate" type="multipart/form-data">
+        <form action="{{ route('form_cliente.store') }}" method="post" class="formCreate" type="multipart/form-data" enctype="multipart/form-data">
             @csrf 
             <input type="text" name="titulo_inc" class="form-control" placeholder="Titulo..." value="{{ old('titulo_inc') }}">
 

@@ -18,7 +18,8 @@
       <p>{{ $incidencia->desc_inc }}</p>
       <p><b><u>Subcategoria:</u></b> {{ $incidencia->nombre_sub_cat }}</p>
       <p><b><u>Técnico:</u></b> {{ $incidencia->nombre_tecnico }}</p>
-      <p><b><u>Imagen:</u></b> {{ $incidencia->foto_inc }}</u></p>
+      <p><b><u>Imagen:</u></b></u></p>
+      <img src="{{ asset($incidencia->foto_inc) }}" alt="Imagen de la incidencia">
     @endforeach
   </div>
 <link rel="stylesheet" href="{{asset('css/style2.css')}}">

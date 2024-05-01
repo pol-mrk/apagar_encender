@@ -210,7 +210,7 @@ function ListarIncidencias(buscar, status_id, fecha_inc, resolta) {
                 str += "<td style='color:white;'>" + item.titulo_inc + "</td>";
                 str += "<td style='color:white;'>" + item.desc_inc + "</td>";
                 str += "<td style='color:white;'>" + item.fecha_inc + "</td>";
-                str += "<td style='color:white;'>" + item.foto_inc + "</td>";
+                str += '<td style="color:white;"><img src="{{ asset("' + item.foto_inc + '") }}" alt="Imagen"></td>';
                 str += "<td style='color:white;'>" + item.nombre_subcat + "</td>";
                 str += "<td style='color:white;'>" + item.nombre_estado + "</td>";
                 str += "<td style='color:white;'>" + item.nombre_user + "</td>";

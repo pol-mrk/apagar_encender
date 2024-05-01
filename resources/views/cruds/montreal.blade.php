@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Usuarios</title>
+  <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
 </head>
 <body>
   <h2>Lista de Usuarios Montreal</h2>
@@ -82,7 +83,7 @@
   </table>
 
   <form action="{{ route('nuevo-usuario') }}" method="GET">
-    <button type="submit">Agregar nuevo empleado</button>
+    <button type="submit">Dar de alta nuevo empleado</button>
 </form>
 
 <a href="{{ route('sedes') }}">Volver</a>

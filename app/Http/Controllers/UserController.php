@@ -40,6 +40,7 @@ class UserController extends Controller
         $user->id_sede = $request->id_sede;
         $user->save();
 
-        return response()->json(['message' => 'Usuario registrado correctamente'], 201);
+        $users = Usuarios::all(); // Por ejemplo, recuperando todos los usuarios desde tu modelo User
+        return view('cruds.barcelona')->with('users', $users);
     }
 }

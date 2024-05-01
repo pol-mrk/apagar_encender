@@ -46,7 +46,7 @@ Route::get('/search.users', [SearchUserController::class, 'search'])->name('sear
 
 use App\Http\Controllers\SubcategoriaController;
 
-Route::get('/crear-subcategoria', [SubcategoriaController::class, 'create']);
+Route::get('/crear-subcategoria', [SubcategoriaController::class, 'create'])->name('crear-subcategoria');
 Route::post('/guardar-subcategoria', [SubcategoriaController::class, 'store'])->name('guardar_subcategoria');
 
 ///////////////////////////////////////// CREAR SUBCATEGORIA /////////////////////////////////////////////////////////////////////////
@@ -56,7 +56,7 @@ Route::post('/guardar-subcategoria', [SubcategoriaController::class, 'store'])->
 
 use App\Http\Controllers\CategoriaSubcategoriaController;
 
-Route::get('/crear-categoria-y-subcategoria', [CategoriaSubcategoriaController::class, 'create']);
+Route::get('/crear-categoria-y-subcategoria', [CategoriaSubcategoriaController::class, 'create'])->name('crear-categoria-y-subcategoria');
 Route::post('/guardar-categoria', [CategoriaSubcategoriaController::class, 'store'])->name('guardar_categoria');
 
 
@@ -70,7 +70,7 @@ use App\Http\Controllers\MontrealController;
 Route::get('/montreal', [MontrealController::class, 'index'])->name('montreal');
 Route::get('/buscar-montreal', [MontrealController::class, 'buscarUsuariosMontreal'])->name('montrealsearch.users');
 // Ruta personalizada para la eliminación
-Route::delete('/cruds/{user}', [MontrealController::class, 'destroy'])->name('usuariomontreal.destroy');
+Route::delete('/usuariomontreal/{user}', [MontrealController::class, 'destroy'])->name('usuariomontreal.destroy');
 
 ///////////////////////////////////////// CRUD MONTREAL /////////////////////////////////////////////////////////////////////////
 
@@ -82,7 +82,8 @@ use App\Http\Controllers\BerlinController;
 Route::get('/berlin', [BerlinController::class, 'listarUsuariosSede2'])->name('berlin');
 Route::get('/buscar-berlin', [BerlinController::class, 'buscarUsuariosBerlin'])->name('berlinsearch.users');
 // Ruta personalizada para la eliminación
-Route::delete('/cruds/{user}', [BerlinController::class, 'destroy'])->name('usuarioberlin.destroy');
+Route::delete('/usuarioberlin/{user}', [BerlinController::class, 'destroy'])->name('usuarioberlin.destroy');
+
 
 ///////////////////////////////////////// CRUD BERLIN /////////////////////////////////////////////////////////////////
 

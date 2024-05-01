@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="{{asset('css/style4.css')}}">
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-    <h2>Registro de Nuevo Usuario</h2>
+    <a href="javascript:history.back()" class="volver">Volver</a>
+    <h1>Registro de Nuevo Usuario</h1>
 
     <form action="{{ route('registro-usuario') }}" method="post" onsubmit="return validarFormulario()">
 
@@ -49,8 +51,6 @@
         <button type="submit">Registrar Usuario</button>
 
     </form>
-
-    <a href="javascript:history.back()">Volver</a>
 
     <script src="{{ asset('js/validaciones_form.user.js') }}"></script>
 </body>

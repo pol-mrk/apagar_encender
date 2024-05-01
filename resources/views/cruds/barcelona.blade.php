@@ -13,10 +13,15 @@
 <body>
   <div class="container" style="border:1px solid;">
     <div class="row">
+      <a href="{{ route('sedes') }}" class="button">Ir a Sedes</a>
       <div id="section1">
         <div class="flex" style="color: white">
           <h2>Lista de Usuarios Barcelona</h2>
+          <a href="{{ route('nuevo-usuario') }}" class="custom-btn">Dar de alta nuevo empleado</a>
+          <a href="{{ route('crear-categoria-y-subcategoria') }}" class="custom-btn">Crear nueva categoria</a>
+          <a href="{{ route('crear-subcategoria') }}" class="custom-btn">Crear nueva subcategoria</a>
           <div class="form-group filtros">
+
             <form id="search-form" action="{{ route('search.users') }}" method="GET">
                 <label for="nombre">Nombre:</label>
                 <input id="buscar" type="text" id="nombre" name="nombre">

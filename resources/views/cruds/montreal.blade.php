@@ -59,7 +59,7 @@
         </div>
         <br>
         <div class="opciones">
-          <form action="/nuevo-usuario" method="get">
+          <form action="/crear-usuario" method="get">
             <input type="submit" value="Dar de alta un nuevo empleado" class="opcion">
           </form>
           <form action="/crear-categoria-y-subcategoria" method="get">

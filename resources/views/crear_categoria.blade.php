@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crear Categoría y Subcategoría</title>
+    <link rel="stylesheet" href="{{asset('css/style4.css')}}">
 </head>
 <body>
-
     <form name="myForm" action="{{ route('guardar_categoria') }}" method="post" onsubmit="return validarFormulario2()">
         @csrf
 
@@ -19,6 +19,7 @@
         <input type="submit" value="Guardar">
     </form>
 
+    <a href="javascript:history.back()" class="volver">Volver</a>
     <script src="{{ asset('js/crear_categoria.js') }}"></script>
 </body>
 </html>

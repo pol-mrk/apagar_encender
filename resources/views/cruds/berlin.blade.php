@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lista de Usuarios</title>
   <link rel="stylesheet" href="{{ asset('css/style3.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <body>
   <h2>Lista de Usuarios Berlin</h2>
-
+  <a href="{{ route('nuevo-usuario') }}" class="custom-btn">Dar de alta nuevo empleado</a>
+  <a href="{{ route('crear-categoria-y-subcategoria') }}" class="custom-btn">Crear nueva categoria</a>
+  <a href="{{ route('crear-subcategoria') }}" class="custom-btn">Crear nueva subcategoria</a>
   <form id="search-form" action="{{ route('berlinsearch.users') }}" method="GET">
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre">
@@ -79,10 +85,6 @@
     @endforelse
 
   </table>
-
-  <form action="{{ route('nuevo-usuario') }}" method="GET">
-    <button type="submit">Dar de alta nuevo empleado</button>
-</form>
 
 <a href="{{ route('sedes') }}">Volver</a>
 

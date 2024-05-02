@@ -180,7 +180,12 @@ html {
 /* Media query para hacer el diseño responsive */
 @media screen and (max-width: 768px) {
   .logo-and-form {
+    position: static; /* o relative, o cualquier otro valor necesario */
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Hace que el contenedor ocupe el 100% del alto de la pantalla */
     flex-direction: column;
+    width: 100%;
     align-items: center; /* Centra los elementos horizontalmente */
   }
 

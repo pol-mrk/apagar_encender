@@ -93,7 +93,6 @@
             <td>{{ $user->fecha_fin_user }}</td>
             <td>{{ $user->id_rol }}</td>
             <td class="flex">
-                <a class="detalles" href='editar_usuario/{{ $user->id }}'>Editar</a>
                 <form action="{{ route('usuariomontreal.destroy', $user->id) }}" method="POST" style="display:inline;">
                   @csrf
                   @method('DELETE')

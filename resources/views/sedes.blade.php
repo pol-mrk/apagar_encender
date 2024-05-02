@@ -9,6 +9,14 @@
 
 <section class="container">
     <div class="category_container">
+
+        <a href="{{ route('login') }}" class="content2">
+            <img src="{{ asset('img/log_out.jpg') }}" class="professio_image" alt="Profession" />
+            <img src="{{ asset('img/log_out.jpg') }}" class="profile_image" alt="Profile" />
+            <div class="profile_detail">
+                <span>Log Out</span>
+            </div>
+
         <a href="{{ route('berlin') }}" class="content">
             <img src="{{ asset('img/alemania.avif') }}" class="professio_image" alt="Profession" />
             <img src="{{ asset('img/sede_alemania.jpeg') }}" class="profile_image" alt="Profile" />

@@ -95,6 +95,73 @@ body {
   transition: opacity 0.3s ease-in-out;
 }
 
+/* /////////////////////////////////////////////////////77 */
+
+.content2 {
+  --active: 0;
+  cursor: pointer;
+  overflow: clip;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  padding: 2.5rem;
+  width: calc((20% / 3) - var(--gap));
+  height: 100%;
+  border-radius: 1rem;
+  transition: width 0.5s ease-in-out;
+  margin-right: 40px;
+}
+
+.content2:hover {
+  --active: 1;
+  width: calc(70% - var(--gap));
+}
+
+.content2::before {
+  content: "";
+  position: absolute;
+  z-index: -10;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background-color: var(--dark);
+  opacity: 0.6;
+}
+
+.content2 img {
+  position: absolute;
+  z-index: -20;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+.content2 .profile_image {
+  opacity: calc(1 - var(--active));
+  transition: opacity 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .profile_detail {
   display: flex;
   flex-direction: column;

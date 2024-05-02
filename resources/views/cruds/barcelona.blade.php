@@ -13,50 +13,61 @@
 <body>
   <div class="container" style="border:1px solid;">
     <div class="row">
-      <a href="{{ route('sedes') }}" class="button">Ir a Sedes</a>
       <div id="section1">
+        <div class="atras">
+          <a href="{{ route('sedes') }}" class="button"><i class="bi bi-box-arrow-left" style="color: white; font-size: 22px; margin-left: 5px;"></i></a>
+        </div>
         <div class="flex" style="color: white">
-          <h2>Lista de Usuarios Barcelona</h2>
-          <a href="{{ route('nuevo-usuario') }}" class="custom-btn">Dar de alta nuevo empleado</a>
-          <a href="{{ route('crear-categoria-y-subcategoria') }}" class="custom-btn">Crear nueva categoria</a>
-          <a href="{{ route('crear-subcategoria') }}" class="custom-btn">Crear nueva subcategoria</a>
+          <h1>Lista de Usuarios Barcelona</h1>
+          <br>
           <div class="form-group filtros">
-
             <form id="search-form" action="{{ route('search.users') }}" method="GET">
                 <label for="nombre">Nombre:</label>
-                <input id="buscar" type="text" id="nombre" name="nombre">
+                <input id="buscar" type="text" name="nombre">
 
                 <button type="submit" class="submits"><i class="bi bi-search"></i></button>
             </form>
 
             <form id="search-form1" action="{{ route('search.users') }}" method="GET">
                 <label for="apellidos">Apellidos:</label>
-                <input id="buscar" type="text" id="apellidos" name="apellidos">
+                <input id="buscar" type="text" name="apellidos">
 
                 <button type="submit" class="submits"><i class="bi bi-search"></i></button>
             </form>
 
             <form id="search-form2" action="{{ route('search.users') }}" method="GET">
                 <label for="fecha_inicio">Fecha de inicio:</label>
-                <input id="buscar" type="date" id="fecha_inicio" name="fecha_inicio">
+                <input id="buscar" type="date" name="fecha_inicio">
 
                 <button type="submit" class="submits"><i class="bi bi-search"></i></button>
             </form>
 
             <form id="search-form3" action="{{ route('search.users') }}" method="GET">
                 <label for="fecha_fin">Fecha de fin:</label>
-                <input id="buscar" type="date" id="fecha_fin" name="fecha_fin">
+                <input id="buscar" type="date" name="fecha_fin">
 
                 <button type="submit" class="submits"><i class="bi bi-search"></i></button>
             </form>
 
             <form id="search-form4" action="{{ route('search.users') }}" method="GET">
                 <label for="rol">Rol:</label>
-                <input id="buscar" type="text" id="rol" name="rol">
+                <input id="buscar" type="text" name="rol">
 
                 <button type="submit" class="submits"><i class="bi bi-search"></i></button>
             </form>
           </div>
+        </div>
+        <br>
+        <div class="opciones">
+          <form action="/nuevo-usuario" method="get">
+            <input type="submit" value="Dar de alta un nuevo empleado" class="opcion">
+          </form>
+          <form action="/crear-categoria-y-subcategoria" method="get">
+            <input type="submit" value="Crear nueva categoria" class="opcion">
+          </form>
+          <form action="/crear-subcategoria" method="get">
+            <input type="submit" value="Crear nueva subcategoria" class="opcion">
+          </form>
         </div>
       </div>
 

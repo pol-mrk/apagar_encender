@@ -52,5 +52,5 @@
         </div>
     </form>
 </div>
-<link rel="stylesheet" href="{{asset('css/style2.css')}}"> <!-- Añade los estilos CSS -->
+<link rel="stylesheet" href="{{asset('css/style2.css')}}">
 @endsection

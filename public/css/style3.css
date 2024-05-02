@@ -62,6 +62,7 @@ tr th {
     font-weight: 400;
     font-style: normal;
     color: black;
+    width: 140px;
 }
 
 /* Estilo al pasar el ratón sobre el campo de búsqueda */
@@ -338,7 +339,7 @@ tbody td {
 .filtros {
     display: flex;
     align-items: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .detalles {
@@ -418,6 +419,7 @@ tr td {
     padding-left: 14px;
     border-radius: 60px;
     transition: border-color 0.3s;
+    margin-right: 10px;
 }
 
 .submits:hover {
@@ -428,4 +430,35 @@ tr td {
 
 .bi {
     font-size: 16px;
+}
+
+.opciones {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.opcion {
+    margin-right: 14px;
+    padding: 7px;
+    border-radius: 25px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+    margin-bottom: 10px;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: black;
+    width: 250px;
+}
+
+.opcion:hover {
+    border-color: #6c757d;
+    background: #1A426A;
+    color: white;
+}
+
+.atras {
+    display: flex;
+    
 }
